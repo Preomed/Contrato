@@ -67,12 +67,16 @@
             text-align: justify;
         }
 
-        /* Estructura de tabla para repetición de encabezado */
+        /* Estructura de tabla para repetición de encabezado y pie de página */
         .tabla-impresion {
             width: 100%;
             border-collapse: collapse;
             border: none;
         }
+
+        /* Reglas clave para forzar la repetición en impresoras */
+        thead { display: table-header-group; }
+        tfoot { display: table-footer-group; }
 
         .encabezado-repetido {
             text-align: left;
@@ -86,7 +90,13 @@
             width: auto;
         }
 
-        .pie-pagina-espacio {
+        /* Pie de página con el texto CONTRATO DE TRABAJO */
+        .pie-pagina-contenido {
+            text-align: center;
+            font-weight: bold;
+            font-size: 10pt;
+            color: #555;
+            padding-top: 15px;
             height: 30px;
         }
 
@@ -94,8 +104,8 @@
         p { margin-bottom: 15px; text-indent: 40px; }
         p.sin-sangria { text-indent: 0; }
         
-        /* Clase para separar las cláusulas con 1 espacio extra */
-        .nueva-clausula { margin-top: 30px; }
+        /* Clase para separar las cláusulas */
+        .nueva-clausula { margin-top: 15px; }
         
         ol { margin-top: 0; margin-bottom: 15px; padding-left: 60px; }
         ol li { margin-bottom: 5px; text-align: justify; }
@@ -104,17 +114,17 @@
         .bloque-firma { text-align: center; width: 40%; position: relative; }
         .linea-firma { border-top: 1px solid #000; margin-bottom: 5px; }
 
-        /* Contenedor y estilo de la firma digital (Aumentado un 30%) */
+        /* Contenedor y estilo de la firma digital */
         .contenedor-firma-digital {
-            height: 78px; /* Aumentado de 60px */
+            height: 78px; 
             display: flex;
             justify-content: center;
             align-items: flex-end;
             margin-bottom: 5px;
         }
         .img-firma-empleador {
-            max-height: 78px; /* Aumentado de 60px */
-            max-width: 234px; /* Aumentado de 180px */
+            max-height: 78px; 
+            max-width: 234px; 
             width: auto;
             display: block;
             margin: 0 auto;
@@ -130,7 +140,7 @@
         @media print {
             @page { 
                 size: letter; 
-                margin: 1.5cm;
+                margin: 1cm 1.5cm; 
                 @bottom-right {
                     content: "Página " counter(page) " de " counter(pages);
                     font-family: 'Aptos Display', Calibri, sans-serif;
@@ -257,7 +267,7 @@
                             
                             <div class="bloque-firma">
                                 <div class="contenedor-firma-digital">
-                                    <img src="https://lh3.googleusercontent.com/d/1vBknhG5ZeMnK-ybQ3_rOeoTdrm2rvJZi" alt="Firma Empleador" class="img-firma-empleador">
+                                    <img src="https://drive.google.com/thumbnail?id=15bp44HbIOKFrdLn_hSHVP4mPfYqbyDjv&sz=w500" alt="Firma Empleador" class="img-firma-empleador">
                                 </div>
                                 <div class="linea-firma"></div>
                                 <strong>Firma Empleador</strong><br>
@@ -272,7 +282,9 @@
             <tfoot>
                 <tr>
                     <td>
-                        <div class="pie-pagina-espacio"></div>
+                        <div class="pie-pagina-contenido">
+                            CONTRATO DE TRABAJO
+                        </div>
                     </td>
                 </tr>
             </tfoot>
@@ -511,7 +523,7 @@
                 const colacionFormat = formatearDineroConSigno(colacionRaw);
                 const movilizacionFormat = formatearDineroConSigno(movilizacionRaw);
 
-                // Asignaciones
+                // Asignaciones Seguras
                 asignarTextoSeguro("dato-nombres", nombres);
                 asignarTextoSeguro("dato-nombres-2", nombres);
                 asignarTextoSeguro("dato-paterno", paterno);
