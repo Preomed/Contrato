@@ -67,7 +67,7 @@
             text-align: justify;
         }
 
-        /* Nueva estructura de tabla para repetición de encabezado */
+        /* Estructura de tabla para repetición de encabezado */
         .tabla-impresion {
             width: 100%;
             border-collapse: collapse;
@@ -82,12 +82,12 @@
         }
 
         .logo-empresa {
-            max-height: 40px; /* Logo reducido en el encabezado */
+            max-height: 40px;
             width: auto;
         }
 
         .pie-pagina-espacio {
-            height: 30px; /* Deja espacio al final de la tabla para el número de página nativo */
+            height: 30px;
         }
 
         h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; margin-top: 10px; }
@@ -101,8 +101,22 @@
         ol li { margin-bottom: 5px; text-align: justify; }
 
         .firmas { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 40px; }
-        .bloque-firma { text-align: center; width: 40%; }
+        .bloque-firma { text-align: center; width: 40%; position: relative; }
         .linea-firma { border-top: 1px solid #000; margin-bottom: 5px; }
+
+        /* Contenedor y estilo de la firma digital */
+        .contenedor-firma-digital {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: -5px;
+        }
+        .img-firma-empleador {
+            max-height: 55px;
+            width: auto;
+            z-index: 2;
+        }
 
         /* Resalta las variables en pantalla */
         .variable { background-color: #fff3cd; font-weight: bold; transition: 0.3s; }
@@ -114,8 +128,7 @@
         @media print {
             @page { 
                 size: letter; 
-                margin: 1.5cm; /* Márgenes reducidos */
-                /* Regla de CSS para forzar el número de página (Compatible con algunos motores PDF) */
+                margin: 1.5cm;
                 @bottom-right {
                     content: "Página " counter(page) " de " counter(pages);
                     font-family: 'Aptos Display', Calibri, sans-serif;
@@ -227,19 +240,23 @@
                         <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
 
                         <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
-                        
+        
                         <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
 
                         <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
 
                         <div class="firmas">
                             <div class="bloque-firma">
+                                <div class="contenedor-firma-digital"></div>
                                 <div class="linea-firma"></div>
                                 <strong>Firma Trabajador</strong><br>
                                 Rut. <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
                             </div>
                             
                             <div class="bloque-firma">
+                                <div class="contenedor-firma-digital">
+                                    <img src="https://drive.google.com/uc?id=1vBknhG5ZeMnK-ybQ3_rOeoTdrm2rvJZi" alt="Firma Empleador" class="img-firma-empleador">
+                                </div>
                                 <div class="linea-firma"></div>
                                 <strong>Firma Empleador</strong><br>
                                 Rut. <strong>76.500.919-7</strong>
@@ -283,6 +300,7 @@
             }
         });
 
+        // Función segura para buscar columnas
         function buscarPropiedad(objeto, nombreColumna) {
             const target = nombreColumna.toLowerCase().replace(/\s+/g, '').trim();
             for (let clave in objeto) {
@@ -293,9 +311,17 @@
             return null;
         }
 
+        // Función segura para asignar texto (Evita que el JS se rompa si no encuentra el ID)
+        function asignarTextoSeguro(id, texto) {
+            const elemento = document.getElementById(id);
+            if (elemento) {
+                elemento.innerText = texto;
+            }
+        }
+
         function obtenerFechaObjeto(fechaStr) {
-            if (!fechaStr || fechaStr.includes("[")) return null;
-            let textoLimpio = fechaStr.trim().split(" ")[0]; 
+            if (!fechaStr || String(fechaStr).includes("[")) return null;
+            let textoLimpio = String(fechaStr).trim().split(" ")[0]; 
             let partes = textoLimpio.split(/[-/]/);
             if (partes.length === 3) {
                 let dia, mes, anio;
@@ -391,8 +417,8 @@
         }
 
         function formatearRut(valor) {
-            if (!valor || valor.includes("[")) return valor;
-            let cuerpo = valor.toString().replace(/[\s\.\,-]/g, '').trim();
+            if (!valor || String(valor).includes("[")) return valor;
+            let cuerpo = String(valor).replace(/[\s\.\,-]/g, '').trim();
             if (cuerpo.length < 2) return valor;
             let dv = cuerpo.slice(-1).toUpperCase();
             let num = cuerpo.slice(0, -1);
@@ -401,16 +427,16 @@
         }
 
         function formatearDineroConSigno(valor) {
-            if (!valor || valor.includes("[")) return valor;
-            let soloNumeros = valor.toString().replace(/[^\d]/g, '');
+            if (!valor || String(valor).includes("[")) return valor;
+            let soloNumeros = String(valor).replace(/[^\d]/g, '');
             if (soloNumeros === "") return valor;
             let numeroConPuntos = new Intl.NumberFormat('es-CL').format(soloNumeros);
             return `$${numeroConPuntos}`;
         }
 
         function formatearFecha(fechaStr, incluirDiaSemana) {
-            if (!fechaStr || fechaStr.includes("[")) return fechaStr;
-            let textoLimpio = fechaStr.trim().split(" ")[0]; 
+            if (!fechaStr || String(fechaStr).includes("[")) return fechaStr;
+            let textoLimpio = String(fechaStr).trim().split(" ")[0]; 
             let partes = textoLimpio.split(/[-/]/);
             if (partes.length === 3) {
                 let dia, mes, anio;
@@ -485,118 +511,124 @@
                 const colacionFormat = formatearDineroConSigno(colacionRaw);
                 const movilizacionFormat = formatearDineroConSigno(movilizacionRaw);
 
-                // Asignaciones
-                document.getElementById("dato-nombres").innerText = nombres;
-                document.getElementById("dato-nombres-2").innerText = nombres;
-                document.getElementById("dato-paterno").innerText = paterno;
-                document.getElementById("dato-paterno-2").innerText = paterno;
-                document.getElementById("dato-materno").innerText = materno;
-                document.getElementById("dato-materno-2").innerText = materno;
+                // Asignaciones Seguras
+                asignarTextoSeguro("dato-nombres", nombres);
+                asignarTextoSeguro("dato-nombres-2", nombres);
+                asignarTextoSeguro("dato-paterno", paterno);
+                asignarTextoSeguro("dato-paterno-2", paterno);
+                asignarTextoSeguro("dato-materno", materno);
+                asignarTextoSeguro("dato-materno-2", materno);
                 
-                document.getElementById("dato-rut").innerText = rutFormateado;
-                document.getElementById("dato-rut-2").innerText = rutFormateado;
-                document.getElementById("dato-rut-firma").innerText = rutFormateado;
+                asignarTextoSeguro("dato-rut", rutFormateado);
+                asignarTextoSeguro("dato-rut-2", rutFormateado);
+                asignarTextoSeguro("dato-rut-firma", rutFormateado);
                 
-                document.getElementById("dato-fecha-nacimiento").innerText = fechaNacTexto; 
-                document.getElementById("dato-nacionalidad").innerText = nacionalidad;
-                document.getElementById("dato-estado-civil").innerText = estadoCivil;
-                document.getElementById("dato-domicilio").innerText = domicilio;
-                document.getElementById("dato-correo").innerText = correo;
-                document.getElementById("dato-correo-2").innerText = correo;
-                document.getElementById("dato-telefono").innerText = telefono;
-                document.getElementById("dato-salud").innerText = salud;
-                document.getElementById("dato-afp").innerText = afp;
-                document.getElementById("dato-cargo").innerText = cargo;
+                asignarTextoSeguro("dato-fecha-nacimiento", fechaNacTexto); 
+                asignarTextoSeguro("dato-nacionalidad", nacionalidad);
+                asignarTextoSeguro("dato-estado-civil", estadoCivil);
+                asignarTextoSeguro("dato-domicilio", domicilio);
+                asignarTextoSeguro("dato-correo", correo);
+                asignarTextoSeguro("dato-correo-2", correo);
+                asignarTextoSeguro("dato-telefono", telefono);
+                asignarTextoSeguro("dato-salud", salud);
+                asignarTextoSeguro("dato-afp", afp);
+                asignarTextoSeguro("dato-cargo", cargo);
                 
-                document.getElementById("dato-sueldo").innerText = sueldoFormat;
-                
-                document.getElementById("dato-banco").innerText = banco;
-                document.getElementById("dato-cuenta").innerText = cuenta;
+                asignarTextoSeguro("dato-sueldo", sueldoFormat);
+                asignarTextoSeguro("dato-banco", banco);
+                asignarTextoSeguro("dato-cuenta", cuenta);
 
-                document.getElementById("dato-centro-costo-intro").innerText = centroCosto;
-                document.getElementById("dato-inicio-contrato-intro").innerText = inicioContratoLargo;
+                asignarTextoSeguro("dato-centro-costo-intro", centroCosto);
+                asignarTextoSeguro("dato-inicio-contrato-intro", inicioContratoLargo);
+                asignarTextoSeguro("dato-centro-costo", centroCosto);
+                asignarTextoSeguro("dato-direccion-centro-costo", direccionCentroCosto);
+                asignarTextoSeguro("dato-jornada", jornada);
+                asignarTextoSeguro("dato-horario", horario);
                 
-                document.getElementById("dato-centro-costo").innerText = centroCosto;
-                document.getElementById("dato-direccion-centro-costo").innerText = direccionCentroCosto;
-                
-                document.getElementById("dato-jornada").innerText = jornada;
-                document.getElementById("dato-horario").innerText = horario;
-                
+                // Lógica Condicional: Ocultar Descanso si es 0 o vacío
                 const bloqueDescanso = document.getElementById("bloque-descanso");
-                if (tiempoColacion.toString().replace(/[^\d]/g, '') === "0" || tiempoColacion.trim() === "") {
-                    bloqueDescanso.style.display = "none";
-                } else {
-                    bloqueDescanso.style.display = "inline";
-                    document.getElementById("dato-tiempo-colacion").innerText = tiempoColacion;
+                if (bloqueDescanso) {
+                    if (String(tiempoColacion).replace(/[^\d]/g, '') === "0" || String(tiempoColacion).trim() === "") {
+                        bloqueDescanso.style.display = "none";
+                    } else {
+                        bloqueDescanso.style.display = "inline";
+                        asignarTextoSeguro("dato-tiempo-colacion", tiempoColacion);
+                    }
                 }
 
+                // Lógica Condicional: Ocultar Bonos si son 0 o vacío
                 const liColacion = document.getElementById("li-colacion");
-                const numColacion = colacionRaw.toString().replace(/[^\d]/g, ''); 
-                if (numColacion === "0" || numColacion === "") {
-                    liColacion.style.display = "none";
-                } else {
-                    liColacion.style.display = "list-item";
-                    document.getElementById("dato-colacion").innerText = colacionFormat;
+                if (liColacion) {
+                    const numColacion = String(colacionRaw).replace(/[^\d]/g, ''); 
+                    if (numColacion === "0" || numColacion === "") {
+                        liColacion.style.display = "none";
+                    } else {
+                        liColacion.style.display = "list-item";
+                        asignarTextoSeguro("dato-colacion", colacionFormat);
+                    }
                 }
 
                 const liMovilizacion = document.getElementById("li-movilizacion");
-                const numMovilizacion = movilizacionRaw.toString().replace(/[^\d]/g, '');
-                if (numMovilizacion === "0" || numMovilizacion === "") {
-                    liMovilizacion.style.display = "none";
-                } else {
-                    liMovilizacion.style.display = "list-item";
-                    document.getElementById("dato-movilizacion").innerText = movilizacionFormat;
+                if (liMovilizacion) {
+                    const numMovilizacion = String(movilizacionRaw).replace(/[^\d]/g, '');
+                    if (numMovilizacion === "0" || numMovilizacion === "") {
+                        liMovilizacion.style.display = "none";
+                    } else {
+                        liMovilizacion.style.display = "list-item";
+                        asignarTextoSeguro("dato-movilizacion", movilizacionFormat);
+                    }
                 }
                 
-                document.getElementById("dato-termino-contrato").innerText = terminoContratoCorto;
-                document.getElementById("dato-inicio-contrato-clausula").innerText = inicioContratoCorto;
+                asignarTextoSeguro("dato-termino-contrato", terminoContratoCorto);
+                asignarTextoSeguro("dato-inicio-contrato-clausula", inicioContratoCorto);
                 
             } else {
                 // Resetear
-                document.getElementById("dato-nombres").innerText = "[Nombres]";
-                document.getElementById("dato-nombres-2").innerText = "[Nombres]";
-                document.getElementById("dato-paterno").innerText = "[Apellido Paterno]";
-                document.getElementById("dato-paterno-2").innerText = "[Apellido Paterno]";
-                document.getElementById("dato-materno").innerText = "[Apellido Materno]";
-                document.getElementById("dato-materno-2").innerText = "[Apellido Materno]";
-                document.getElementById("dato-rut").innerText = "[RUT]";
-                document.getElementById("dato-rut-2").innerText = "[RUT]";
-                document.getElementById("dato-rut-firma").innerText = "[RUT]";
-                document.getElementById("dato-fecha-nacimiento").innerText = "[Fecha de Nacimiento]";
-                document.getElementById("dato-nacionalidad").innerText = "[Nacionalidad]";
-                document.getElementById("dato-estado-civil").innerText = "[Estado Civil]";
-                document.getElementById("dato-domicilio").innerText = "[Domicilio]";
-                document.getElementById("dato-correo").innerText = "[Correo Electrónico]";
-                document.getElementById("dato-correo-2").innerText = "[Correo Electrónico]";
-                document.getElementById("dato-telefono").innerText = "[Teléfono]";
-                document.getElementById("dato-salud").innerText = "[Salud]";
-                document.getElementById("dato-afp").innerText = "[AFP]";
-                document.getElementById("dato-cargo").innerText = "[Cargo]";
-                document.getElementById("dato-sueldo").innerText = "[Sueldo Base]";
+                asignarTextoSeguro("dato-nombres", "[Nombres]");
+                asignarTextoSeguro("dato-nombres-2", "[Nombres]");
+                asignarTextoSeguro("dato-paterno", "[Apellido Paterno]");
+                asignarTextoSeguro("dato-paterno-2", "[Apellido Paterno]");
+                asignarTextoSeguro("dato-materno", "[Apellido Materno]");
+                asignarTextoSeguro("dato-materno-2", "[Apellido Materno]");
+                asignarTextoSeguro("dato-rut", "[RUT]");
+                asignarTextoSeguro("dato-rut-2", "[RUT]");
+                asignarTextoSeguro("dato-rut-firma", "[RUT]");
+                asignarTextoSeguro("dato-fecha-nacimiento", "[Fecha de Nacimiento]");
+                asignarTextoSeguro("dato-nacionalidad", "[Nacionalidad]");
+                asignarTextoSeguro("dato-estado-civil", "[Estado Civil]");
+                asignarTextoSeguro("dato-domicilio", "[Domicilio]");
+                asignarTextoSeguro("dato-correo", "[Correo Electrónico]");
+                asignarTextoSeguro("dato-correo-2", "[Correo Electrónico]");
+                asignarTextoSeguro("dato-telefono", "[Teléfono]");
+                asignarTextoSeguro("dato-salud", "[Salud]");
+                asignarTextoSeguro("dato-afp", "[AFP]");
+                asignarTextoSeguro("dato-cargo", "[Cargo]");
+                asignarTextoSeguro("dato-sueldo", "[Sueldo Base]");
                 
-                document.getElementById("dato-banco").innerText = "[Banco]";
-                document.getElementById("dato-cuenta").innerText = "[cuenta]";
+                asignarTextoSeguro("dato-banco", "[Banco]");
+                asignarTextoSeguro("dato-cuenta", "[cuenta]");
 
-                document.getElementById("dato-centro-costo-intro").innerText = "[Centro de Costo]";
-                document.getElementById("dato-inicio-contrato-intro").innerText = "[Inicio Contrato]";
-                document.getElementById("dato-centro-costo").innerText = "[Centro de Costo]";
-                document.getElementById("dato-direccion-centro-costo").innerText = "[Dirección Centro de Costo]";
-                document.getElementById("dato-jornada").innerText = "[Jornada]";
-                document.getElementById("dato-horario").innerText = "[Horario]";
+                asignarTextoSeguro("dato-centro-costo-intro", "[Centro de Costo]");
+                asignarTextoSeguro("dato-inicio-contrato-intro", "[Inicio Contrato]");
+                asignarTextoSeguro("dato-centro-costo", "[Centro de Costo]");
+                asignarTextoSeguro("dato-direccion-centro-costo", "[Dirección Centro de Costo]");
+                asignarTextoSeguro("dato-jornada", "[Jornada]");
+                asignarTextoSeguro("dato-horario", "[Horario]");
                 
-                document.getElementById("bloque-descanso").style.display = "inline";
-                document.getElementById("dato-tiempo-colacion").innerText = "[Tiempo Colación]";
+                const bloqueDescanso = document.getElementById("bloque-descanso");
+                if (bloqueDescanso) bloqueDescanso.style.display = "inline";
+                asignarTextoSeguro("dato-tiempo-colacion", "[Tiempo Colación]");
                 
                 const liCol = document.getElementById("li-colacion");
-                liCol.style.display = "list-item";
-                document.getElementById("dato-colacion").innerText = "[Colación]";
+                if (liCol) liCol.style.display = "list-item";
+                asignarTextoSeguro("dato-colacion", "[Colación]");
                 
                 const liMov = document.getElementById("li-movilizacion");
-                liMov.style.display = "list-item";
-                document.getElementById("dato-movilizacion").innerText = "[Movilización]";
+                if (liMov) liMov.style.display = "list-item";
+                asignarTextoSeguro("dato-movilizacion", "[Movilización]");
                 
-                document.getElementById("dato-termino-contrato").innerText = "[Término Contrato]";
-                document.getElementById("dato-inicio-contrato-clausula").innerText = "[Inicio Contrato]";
+                asignarTextoSeguro("dato-termino-contrato", "[Término Contrato]");
+                asignarTextoSeguro("dato-inicio-contrato-clausula", "[Inicio Contrato]");
             }
         }
     </script>
