@@ -104,17 +104,20 @@
         .bloque-firma { text-align: center; width: 40%; position: relative; }
         .linea-firma { border-top: 1px solid #000; margin-bottom: 5px; }
 
-        /* Contenedor y estilo de la firma digital */
+        /* Contenedor y estilo de la firma digital (Aumentado un 40%) */
         .contenedor-firma-digital {
-            height: 50px;
+            height: 110px; 
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            margin-bottom: -5px;
+            margin-bottom: 5px;
         }
         .img-firma-empleador {
-            max-height: 55px;
+            max-height: 110px; 
+            max-width: 320px; 
             width: auto;
+            display: block;
+            margin: 0 auto;
             z-index: 2;
         }
 
@@ -255,7 +258,7 @@
                             
                             <div class="bloque-firma">
                                 <div class="contenedor-firma-digital">
-                                    <img src="https://drive.google.com/uc?id=1vBknhG5ZeMnK-ybQ3_rOeoTdrm2rvJZi" alt="Firma Empleador" class="img-firma-empleador">
+                                    <img src="https://lh3.googleusercontent.com/d/1vBknhG5ZeMnK-ybQ3_rOeoTdrm2rvJZi" alt="Firma Empleador" class="img-firma-empleador">
                                 </div>
                                 <div class="linea-firma"></div>
                                 <strong>Firma Empleador</strong><br>
@@ -311,7 +314,7 @@
             return null;
         }
 
-        // Función segura para asignar texto (Evita que el JS se rompa si no encuentra el ID)
+        // Función segura para asignar texto
         function asignarTextoSeguro(id, texto) {
             const elemento = document.getElementById(id);
             if (elemento) {
