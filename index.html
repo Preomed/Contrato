@@ -104,21 +104,20 @@
         .bloque-firma { text-align: center; width: 40%; position: relative; }
         .linea-firma { border-top: 1px solid #000; margin-bottom: 5px; }
 
-        /* Contenedor y estilo de la firma digital (Aumentado un 40%) */
+        /* Contenedor y estilo de la firma digital (Aumentado un 30%) */
         .contenedor-firma-digital {
-            height: 110px; 
+            height: 78px; /* Aumentado de 60px */
             display: flex;
             justify-content: center;
             align-items: flex-end;
             margin-bottom: 5px;
         }
         .img-firma-empleador {
-            max-height: 110px; 
-            max-width: 320px; 
+            max-height: 78px; /* Aumentado de 60px */
+            max-width: 234px; /* Aumentado de 180px */
             width: auto;
             display: block;
             margin: 0 auto;
-            z-index: 2;
         }
 
         /* Resalta las variables en pantalla */
@@ -303,7 +302,6 @@
             }
         });
 
-        // Función segura para buscar columnas
         function buscarPropiedad(objeto, nombreColumna) {
             const target = nombreColumna.toLowerCase().replace(/\s+/g, '').trim();
             for (let clave in objeto) {
@@ -314,7 +312,6 @@
             return null;
         }
 
-        // Función segura para asignar texto
         function asignarTextoSeguro(id, texto) {
             const elemento = document.getElementById(id);
             if (elemento) {
@@ -480,7 +477,7 @@
                 const domicilio = buscarPropiedad(datos, "domicilio") || "[Domicilio]";
                 const correo = buscarPropiedad(datos, "correo") || buscarPropiedad(datos, "email") || "";
                 
-                const telefono = buscarPropiedad(datos, "telefono") || buscarPropiedad(datos, "teléfono") || buscarPropiedad(datos, "celular") || buscarPropiedad(datos, "fono") || "[Teléfono]";
+                const telephone = buscarPropiedad(datos, "telefono") || buscarPropiedad(datos, "teléfono") || buscarPropiedad(datos, "celular") || buscarPropiedad(datos, "fono") || "[Teléfono]";
                 
                 const salud = buscarPropiedad(datos, "salud") || "[Salud]";
                 const afp = buscarPropiedad(datos, "afp") || "[AFP]";
@@ -514,7 +511,7 @@
                 const colacionFormat = formatearDineroConSigno(colacionRaw);
                 const movilizacionFormat = formatearDineroConSigno(movilizacionRaw);
 
-                // Asignaciones Seguras
+                // Asignaciones
                 asignarTextoSeguro("dato-nombres", nombres);
                 asignarTextoSeguro("dato-nombres-2", nombres);
                 asignarTextoSeguro("dato-paterno", paterno);
@@ -532,7 +529,7 @@
                 asignarTextoSeguro("dato-domicilio", domicilio);
                 asignarTextoSeguro("dato-correo", correo);
                 asignarTextoSeguro("dato-correo-2", correo);
-                asignarTextoSeguro("dato-telefono", telefono);
+                asignarTextoSeguro("dato-telefono", telephone);
                 asignarTextoSeguro("dato-salud", salud);
                 asignarTextoSeguro("dato-afp", afp);
                 asignarTextoSeguro("dato-cargo", cargo);
@@ -548,7 +545,6 @@
                 asignarTextoSeguro("dato-jornada", jornada);
                 asignarTextoSeguro("dato-horario", horario);
                 
-                // Lógica Condicional: Ocultar Descanso si es 0 o vacío
                 const bloqueDescanso = document.getElementById("bloque-descanso");
                 if (bloqueDescanso) {
                     if (String(tiempoColacion).replace(/[^\d]/g, '') === "0" || String(tiempoColacion).trim() === "") {
@@ -559,7 +555,6 @@
                     }
                 }
 
-                // Lógica Condicional: Ocultar Bonos si son 0 o vacío
                 const liColacion = document.getElementById("li-colacion");
                 if (liColacion) {
                     const numColacion = String(colacionRaw).replace(/[^\d]/g, ''); 
