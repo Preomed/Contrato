@@ -67,7 +67,30 @@
             text-align: justify;
         }
 
-        h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; }
+        /* Nueva estructura de tabla para repetición de encabezado */
+        .tabla-impresion {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+
+        .encabezado-repetido {
+            text-align: left;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo-empresa {
+            max-height: 40px; /* Logo reducido en el encabezado */
+            width: auto;
+        }
+
+        .pie-pagina-espacio {
+            height: 30px; /* Deja espacio al final de la tabla para el número de página nativo */
+        }
+
+        h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; margin-top: 10px; }
         p { margin-bottom: 15px; text-indent: 40px; }
         p.sin-sangria { text-indent: 0; }
         
@@ -76,9 +99,6 @@
         
         ol { margin-top: 0; margin-bottom: 15px; padding-left: 60px; }
         ol li { margin-bottom: 5px; text-align: justify; }
-
-        .logo-container { margin-bottom: 25px; text-align: left; }
-        .logo-empresa { max-height: 80px; width: auto; }
 
         .firmas { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 40px; }
         .bloque-firma { text-align: center; width: 40%; }
@@ -92,7 +112,17 @@
 
         /* Estilos de Impresión */
         @media print {
-            @page { size: letter; margin: 2.5cm; }
+            @page { 
+                size: letter; 
+                margin: 1.5cm; /* Márgenes reducidos */
+                /* Regla de CSS para forzar el número de página (Compatible con algunos motores PDF) */
+                @bottom-right {
+                    content: "Página " counter(page) " de " counter(pages);
+                    font-family: 'Aptos Display', Calibri, sans-serif;
+                    font-size: 8pt;
+                    color: #666;
+                }
+            }
             body { background-color: transparent; margin: 0; padding: 0; max-width: 100%; }
             .contenedor-carta { box-shadow: none; padding: 0; }
             .controles { display: none !important; }
@@ -118,95 +148,116 @@
     </div>
 
     <div class="contenedor-carta">
-        
-        <div class="logo-container">
-            <img src="https://www.preomed.cl/wp-content/uploads/2025/05/350px-rgb-min.webp" alt="Logo Preomed Salud SpA" class="logo-empresa">
-        </div>
-
-        <h1>CONTRATO DE TRABAJO</h1>
-
-        <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong>, representada legalmente por Doña <strong>Yoselyn Valesca Álvarez Duarte</strong>, Rut. <strong>16.135.473-2</strong>, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
-
-        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
-
-        <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
-
-        <p class="nueva-clausula"><strong>Tercero. -</strong> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribución de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
-        <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
-
-        <p class="nueva-clausula"><strong>Cuarto. -</strong> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
-        <ol type="a">
-            <li>Sueldo Base Mensual <span class="variable" id="dato-sueldo">[Sueldo Base]</span> .- (proporcional a los días trabajados en el mes)</li>
-            <li>La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
-            <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
-            <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
-        </ol>
-        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
-
-        <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
-
-        <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
-
-        <p class="nueva-clausula"><strong>Séptimo. -</strong> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
-        <ol type="a">
-            <li>desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
-            <li>efectuar su trabajo en forma educada, manteniendo un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
-            <li>emplear la máxima diligencia en el cuidado del equipo de trabajo, instalaciones del empleador y en general, de todos los bienes de la empresa;</li>
-            <li>cuidar de la conservación, buen estado, aseo y uso adecuado de las instalaciones y materiales, evitando pérdidas y deterioros o gastos innecesarios;</li>
-            <li>llegar puntualmente a su trabajo y registrar diariamente sus horas de entrada y salida;</li>
-            <li>avisar oportunamente las ausencias y su motivo;</li>
-            <li>comunicar dentro de las 48 horas siguientes de sucedido un cambio en los antecedentes personales, cambio de domicilio y que deben ser considerados en el contrato de trabajo;</li>
-            <li>mantener una adecuada higiene personal.</li>
-        </ol>
-
-        <p class="nueva-clausula"><strong>Octavo. -</strong> Las partes acuerdan establecer como prohibición expresa que el/la trabajador/a ejecute para terceros negociaciones o servicios que se encuentre dentro del giro del negocio del empleador, así como prestar su servicio a terceros que realicen un giro similar al del empleador. En caso de infracción a la prohibición señalada en el inciso anterior, el empleador queda habilitado para proceder conforme al N°2 del artículo 160 del Código del Trabajo. Este contrato terminará en los casos señalados en los artículos 159, 160 y 161 del Código del Trabajo. Para los efectos del N°1° del referido artículo 160, constituyen falta de probidad destinar para su uso personal o autorizar el uso por parte de terceros de bienes de la empresa, sin autorización expresa del empleador. Y para los efectos del N°7° del mismo artículo 160, constituyen incumplimiento grave de las obligaciones que impone el contrato, el no cumplimiento de las obligaciones estipuladas en la cláusula Séptima del presente contrato, además de las siguientes prohibiciones:</p>
-        <ol type="a">
-            <li>presentarse a cumplir sus funciones en estado de intemperancia o bajo los efectos de drogas o sustancias psicotrópicas, consumir bebidas alcohólicas, drogas o sustancias psicotrópicas dentro de la jornada de trabajo o introducir dichas sustancias al lugar de trabajo;</li>
-            <li>atrasos reiterados en el inicio de su jornada de trabajo;</li>
-            <li>fumar durante la jornada de trabajo;</li>
-            <li>ejecutar durante las horas de trabajo y en el desempeño de sus funciones actividades ajenas a su labor y al establecimiento, dedicarse a atender asuntos o negocios particulares;</li>
-            <li>otorgar conocimiento a terceros o utilizar de cualquier manera y para provecho propio, la información propia del empleador;</li>
-            <li>infringir las normas de seguridad establecidas en el Reglamento Interno de Orden Higiene y Seguridad;</li>
-            <li>resistirse a acatar las órdenes e instrucciones de sus jefes;</li>
-            <li>no registrar su asistencia y atrasos en forma debida en el registro de asistencia.</li>
-        </ol>
-
-        <p class="nueva-clausula"><strong>Noveno. -</strong> Las partes convienen en elevar la calidad de esencial de este contrato, la obligatoriedad para el/la trabajador/a de cumplir celosamente con el Reglamento Interno de Orden, Higiene y Seguridad de la empresa, y sus eventuales modificaciones cuyo texto recibe en este acto, según consta en el presente contrato y en documento anexo de recepción de este. Igualmente, el/la trabajador/a declara conocer el texto íntegro de dicho Reglamento y sus modificaciones, el cual se entiende como parte integrante de este contrato, de tal manera, que su desobediencia o transgresión se estimará como incumplimiento grave a las obligaciones que impone el contrato, pudiendo el empleador poner término a este de inmediato y sin indemnización alguna.</p>
-
-        <p class="nueva-clausula"><strong>Decimo. -</strong> El/La trabajador/a se obliga a mantener un comportamiento probo, íntegro y debe abstenerse de realizar conductas que pudieran vincular a la Empresa con los delitos considerados en la Ley N° 20.393, a saber, delitos de: lavado de activos (art. 27, ley 19.913); financiamiento del terrorismo, (art. 8, ley 18.314); negociación incompatible (Artículo 240, Código Penal); cohecho y (arts. 250 y 251 bis); corrupción entre particulares (Art. 287 bis y 287 ter, Código Penal); receptación (artículo 456 bis A, Código Penal); apropiación indebida (Artículo 470 N.º 1, Código Penal); y administración desleal (Artículo 470 N.º 11, Código Penal), sin perjuicio de aquellos que el legislador pueda incorporar en el futuro. El incumplimiento significara la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; de acuerdo con el artículo 160 N.°7 del código del trabajo.</p>
-
-        <p class="nueva-clausula"><strong>Undécimo. -</strong> El/La trabajador/a se obliga a guardar total reserva, dentro y fuera de la Empresa, de todos los hechos, antecedentes e informaciones de que tome conocimiento en el ejercicio de sus funciones o derivados de las actividades y negocios del Empleador y sus sociedades relacionadas, lo que considera en general pero no exclusivamente, estudios, desarrollos informáticos, tecnología aplicada y cualquier otro dato o antecedente de propiedad del Empleador y sus sociedades relacionadas, aún después de producida la terminación del presente Contrato. El/La trabajador/a consiente que está prohibida la divulgación, transferencia a cualquier título, comunicación, alteración, modificación o copia de dichos antecedentes e informaciones, así como la utilización indebida o para otros propósitos que no sean sus labores. Además, El/la trabajador/a se obliga a la protección de la información suministrada por el Empleador, debiendo tomar las medidas de seguridad apropiadas para la protección contra el acceso o difusión no autorizados.</p>
-
-        <p class="nueva-clausula"><strong>Duodécimo. -</strong> Las partes dejan expresa constancia y El/la trabajador/a declara en forma explícita que todo y cualquier procedimiento, marca, modelo, sistema, programa computacional o software, desarrollo o aplicación informática, proyecto u otro, y en general, cualquier invención o creación y cualquier otro elemento de éstos o derivado de ellos, de que conozca o en el que intervenga el/la trabajador/a, sea en forma directa o indirecta en el desempeño de sus labores, pertenece y pertenecerá única y exclusivamente al Empleador, o a quien éste designe, sin pago adicional de ninguna especie para el/la trabajador/a, aun cuando sea efectivamente su autor o creador.</p>
-
-        <p class="nueva-clausula"><strong>Decimotercero. -</strong> Las partes convienen que cualquier acción dolosa que realice el/la trabajador/a contra los ejecutivos de la empresa, los bienes del empleador, como asimismo contra alguno de sus compañeros de trabajo o cualquier otra persona natural, además de significar la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; Y de las responsabilidades penales, será motivo de responsabilidad civil ante la empresa, sus ejecutivos, sus dependientes o terceros.</p>
-
-        <p class="nueva-clausula"><strong>Decimocuarto. -</strong> El/La trabajador/a hará uso del feriado anual que le corresponda en conformidad a la ley, en la época que señale el empleador, preferentemente en la época estival de acuerdo con las necesidades de la empresa, pudiendo el empleador fraccionar el feriado.</p>
-
-        <p class="nueva-clausula"><strong>Decimoquinto. -</strong> Se deja constancia que el/la trabajador/a ingresara a prestar servicios para el empleador el día <strong><span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span></strong>.</p>
-
-        <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
-
-        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
-        
-        <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
-
-        <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
-
-        <div class="firmas">
-            <div class="bloque-firma">
-                <div class="linea-firma"></div>
-                <strong>Firma Trabajador</strong><br>
-                Rut. <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
-            </div>
+        <table class="tabla-impresion">
+            <thead>
+                <tr>
+                    <td>
+                        <div class="encabezado-repetido">
+                            <img src="https://www.preomed.cl/wp-content/uploads/2025/05/350px-rgb-min.webp" alt="Logo Preomed Salud SpA" class="logo-empresa">
+                        </div>
+                    </td>
+                </tr>
+            </thead>
             
-            <div class="bloque-firma">
-                <div class="linea-firma"></div>
-                <strong>Firma Empleador</strong><br>
-                Rut. <strong>76.500.919-7</strong>
-            </div>
-        </div>
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>CONTRATO DE TRABAJO</h1>
 
+                        <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong>, representada legalmente por Doña <strong>Yoselyn Valesca Álvarez Duarte</strong>, Rut. <strong>16.135.473-2</strong>, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
+
+                        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
+
+                        <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
+
+                        <p class="nueva-clausula"><strong>Tercero. -</strong> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribución de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
+                        <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
+
+                        <p class="nueva-clausula"><strong>Cuarto. -</strong> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
+                        <ol type="a">
+                            <li>Sueldo Base Mensual <span class="variable" id="dato-sueldo">[Sueldo Base]</span> .- (proporcional a los días trabajados en el mes)</li>
+                            <li>La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
+                            <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
+                            <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
+                        </ol>
+                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
+
+                        <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
+
+                        <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
+
+                        <p class="nueva-clausula"><strong>Séptimo. -</strong> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
+                        <ol type="a">
+                            <li>desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
+                            <li>efectuar su trabajo en forma educada, manteniendo un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
+                            <li>emplear la máxima diligencia en el cuidado del equipo de trabajo, instalaciones del empleador y en general, de todos los bienes de la empresa;</li>
+                            <li>cuidar de la conservación, buen estado, aseo y uso adecuado de las instalaciones y materiales, evitando pérdidas y deterioros o gastos innecesarios;</li>
+                            <li>llegar puntualmente a su trabajo y registrar diariamente sus horas de entrada y salida;</li>
+                            <li>avisar oportunamente las ausencias y su motivo;</li>
+                            <li>comunicar dentro de las 48 horas siguientes de sucedido un cambio en los antecedentes personales, cambio de domicilio y que deben ser considerados en el contrato de trabajo;</li>
+                            <li>mantener una adecuada higiene personal.</li>
+                        </ol>
+
+                        <p class="nueva-clausula"><strong>Octavo. -</strong> Las partes acuerdan establecer como prohibición expresa que el/la trabajador/a ejecute para terceros negociaciones o servicios que se encuentre dentro del giro del negocio del empleador, así como prestar su servicio a terceros que realicen un giro similar al del empleador. En caso de infracción a la prohibición señalada en el inciso anterior, el empleador queda habilitado para proceder conforme al N°2 del artículo 160 del Código del Trabajo. Este contrato terminará en los casos señalados en los artículos 159, 160 y 161 del Código del Trabajo. Para los efectos del N°1° del referido artículo 160, constituyen falta de probidad destinar para su uso personal o autorizar el uso por parte de terceros de bienes de la empresa, sin autorización expresa del empleador. Y para los efectos del N°7° del mismo artículo 160, constituyen incumplimiento grave de las obligaciones que impone el contrato, el no cumplimiento de las obligaciones estipuladas en la cláusula Séptima del presente contrato, además de las siguientes prohibiciones:</p>
+                        <ol type="a">
+                            <li>presentarse a cumplir sus funciones en estado de intemperancia o bajo los efectos de drogas o sustancias psicotrópicas, consumir bebidas alcohólicas, drogas o sustancias psicotrópicas dentro de la jornada de trabajo o introducir dichas sustancias al lugar de trabajo;</li>
+                            <li>atrasos reiterados en el inicio de su jornada de trabajo;</li>
+                            <li>fumar durante la jornada de trabajo;</li>
+                            <li>ejecutar durante las horas de trabajo y en el desempeño de sus funciones actividades ajenas a su labor y al establecimiento, dedicarse a atender asuntos o negocios particulares;</li>
+                            <li>otorgar conocimiento a terceros o utilizar de cualquier manera y para provecho propio, la información propia del empleador;</li>
+                            <li>infringir las normas de seguridad establecidas en el Reglamento Interno de Orden Higiene y Seguridad;</li>
+                            <li>resistirse a acatar las órdenes e instrucciones de sus jefes;</li>
+                            <li>no registrar su asistencia y atrasos en forma debida en el registro de asistencia.</li>
+                        </ol>
+
+                        <p class="nueva-clausula"><strong>Noveno. -</strong> Las partes convienen en elevar la calidad de esencial de este contrato, la obligatoriedad para el/la trabajador/a de cumplir celosamente con el Reglamento Interno de Orden, Higiene y Seguridad de la empresa, y sus eventuales modificaciones cuyo texto recibe en este acto, según consta en el presente contrato y en documento anexo de recepción de este. Igualmente, el/la trabajador/a declara conocer el texto íntegro de dicho Reglamento y sus modificaciones, el cual se entiende como parte integrante de este contrato, de tal manera, que su desobediencia o transgresión se estimará como incumplimiento grave a las obligaciones que impone el contrato, pudiendo el empleador poner término a este de inmediato y sin indemnización alguna.</p>
+
+                        <p class="nueva-clausula"><strong>Decimo. -</strong> El/La trabajador/a se obliga a mantener un comportamiento probo, íntegro y debe abstenerse de realizar conductas que pudieran vincular a la Empresa con los delitos considerados en la Ley N° 20.393, a saber, delitos de: lavado de activos (art. 27, ley 19.913); financiamiento del terrorismo, (art. 8, ley 18.314); negociación incompatible (Artículo 240, Código Penal); cohecho y (arts. 250 y 251 bis); corrupción entre particulares (Art. 287 bis y 287 ter, Código Penal); receptación (artículo 456 bis A, Código Penal); apropiación indebida (Artículo 470 N.º 1, Código Penal); y administración desleal (Artículo 470 N.º 11, Código Penal), sin perjuicio de aquellos que el legislador pueda incorporar en el futuro. El incumplimiento significara la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; de acuerdo con el artículo 160 N.°7 del código del trabajo.</p>
+
+                        <p class="nueva-clausula"><strong>Undécimo. -</strong> El/La trabajador/a se obliga a guardar total reserva, dentro y fuera de la Empresa, de todos los hechos, antecedentes e informaciones de que tome conocimiento en el ejercicio de sus funciones o derivados de las actividades y negocios del Empleador y sus sociedades relacionadas, lo que considera en general pero no exclusivamente, estudios, desarrollos informáticos, tecnología aplicada y cualquier otro dato o antecedente de propiedad del Empleador y sus sociedades relacionadas, aún después de producida la terminación del presente Contrato. El/La trabajador/a consiente que está prohibida la divulgación, transferencia a cualquier título, comunicación, alteración, modificación o copia de dichos antecedentes e informaciones, así como la utilización indebida o para otros propósitos que no sean sus labores. Además, El/la trabajador/a se obliga a la protección de la información suministrada por el Empleador, debiendo tomar las medidas de seguridad apropiadas para la protección contra el acceso o difusión no autorizados.</p>
+
+                        <p class="nueva-clausula"><strong>Duodécimo. -</strong> Las partes dejan expresa constancia y El/la trabajador/a declara en forma explícita que todo y cualquier procedimiento, marca, modelo, sistema, programa computacional o software, desarrollo o aplicación informática, proyecto u otro, y en general, cualquier invención o creación y cualquier otro elemento de éstos o derivado de ellos, de que conozca o en el que intervenga el/la trabajador/a, sea en forma directa o indirecta en el desempeño de sus labores, pertenece y pertenecerá única y exclusivamente al Empleador, o a quien éste designe, sin pago adicional de ninguna especie para el/la trabajador/a, aun cuando sea efectivamente su autor o creador.</p>
+
+                        <p class="nueva-clausula"><strong>Decimotercero. -</strong> Las partes convienen que cualquier acción dolosa que realice el/la trabajador/a contra los ejecutivos de la empresa, los bienes del empleador, como asimismo contra alguno de sus compañeros de trabajo o cualquier otra persona natural, además de significar la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; Y de las responsabilidades penales, será motivo de responsabilidad civil ante la empresa, sus ejecutivos, sus dependientes o terceros.</p>
+
+                        <p class="nueva-clausula"><strong>Decimocuarto. -</strong> El/La trabajador/a hará uso del feriado anual que le corresponda en conformidad a la ley, en la época que señale el empleador, preferentemente en la época estival de acuerdo con las necesidades de la empresa, pudiendo el empleador fraccionar el feriado.</p>
+
+                        <p class="nueva-clausula"><strong>Decimoquinto. -</strong> Se deja constancia que el/la trabajador/a ingresara a prestar servicios para el empleador el día <strong><span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span></strong>.</p>
+
+                        <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
+
+                        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
+                        
+                        <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
+
+                        <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
+
+                        <div class="firmas">
+                            <div class="bloque-firma">
+                                <div class="linea-firma"></div>
+                                <strong>Firma Trabajador</strong><br>
+                                Rut. <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
+                            </div>
+                            
+                            <div class="bloque-firma">
+                                <div class="linea-firma"></div>
+                                <strong>Firma Empleador</strong><br>
+                                Rut. <strong>76.500.919-7</strong>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="pie-pagina-espacio"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
     <script>
@@ -471,7 +522,6 @@
                 document.getElementById("dato-jornada").innerText = jornada;
                 document.getElementById("dato-horario").innerText = horario;
                 
-                // Lógica Condicional: Ocultar Descanso si es 0 o vacío
                 const bloqueDescanso = document.getElementById("bloque-descanso");
                 if (tiempoColacion.toString().replace(/[^\d]/g, '') === "0" || tiempoColacion.trim() === "") {
                     bloqueDescanso.style.display = "none";
@@ -480,7 +530,6 @@
                     document.getElementById("dato-tiempo-colacion").innerText = tiempoColacion;
                 }
 
-                // Lógica Condicional: Ocultar Bonos si son 0 o vacío
                 const liColacion = document.getElementById("li-colacion");
                 const numColacion = colacionRaw.toString().replace(/[^\d]/g, ''); 
                 if (numColacion === "0" || numColacion === "") {
