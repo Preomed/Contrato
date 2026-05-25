@@ -8,8 +8,8 @@
     
     <style>
         body {
-            font-family: 'Aptos Display', Calibri, Arial, sans-serif; /* Nueva tipografía aplicada */
-            font-size: 12pt;
+            font-family: 'Aptos Display', Calibri, Arial, sans-serif;
+            font-size: 9pt;
             line-height: 1.5;
             color: #000;
             max-width: 800px;
@@ -26,21 +26,33 @@
             border-radius: 8px;
             text-align: center;
             font-family: 'Aptos Display', Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 12pt;
+        }
+
+        .controles label {
+            font-size: 14px;
+            margin-left: 10px;
         }
 
         select, button {
             padding: 10px;
-            font-size: 16px;
-            margin: 5px;
+            font-size: 14px;
             font-family: inherit;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         button {
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            margin-left: 15px;
         }
 
         button:hover {
@@ -55,7 +67,7 @@
             text-align: justify;
         }
 
-        h1 { font-size: 16pt; text-decoration: underline; text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; }
         p { margin-bottom: 15px; text-indent: 40px; }
         p.sin-sangria { text-indent: 0; }
         
@@ -80,12 +92,11 @@
 
         /* Estilos de Impresión */
         @media print {
-            /* Formato Carta (Letter) con márgenes requeridos */
             @page { size: letter; margin: 2.5cm; }
             body { background-color: transparent; margin: 0; padding: 0; max-width: 100%; }
             .contenedor-carta { box-shadow: none; padding: 0; }
             .controles { display: none !important; }
-            .variable { background-color: transparent; font-weight: normal; }
+            .variable { background-color: transparent; font-weight: inherit; }
             p, ol, li, .formato-bloque { page-break-inside: avoid; }
         }
     </style>
@@ -93,11 +104,17 @@
 <body>
 
     <div class="controles">
-        <label for="selector-trabajador"><strong>Seleccionar Trabajador:</strong></label>
-        <select id="selector-trabajador" onchange="actualizarContrato()">
-            <option value="">Conectando con Google Sheets...</option>
+        <label for="selector-mes"><strong>Mes Ingreso:</strong></label>
+        <select id="selector-mes" onchange="actualizarListaTrabajadores()">
+            <option value="">Cargando...</option>
         </select>
-        <button onclick="window.print()">Imprimir / Guardar como PDF</button>
+
+        <label for="selector-trabajador"><strong>Trabajador:</strong></label>
+        <select id="selector-trabajador" onchange="actualizarContrato()">
+            <option value="">-- Seleccione --</option>
+        </select>
+
+        <button onclick="window.print()">Imprimir PDF</button>
     </div>
 
     <div class="contenedor-carta">
@@ -108,9 +125,9 @@
 
         <h1>CONTRATO DE TRABAJO</h1>
 
-        <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span>, entre la sociedad Preomed Salud SpA, Rut. 76.500.919-7, representada legalmente por Doña Yoselyn Valesca Álvarez Duarte, Rut. 16.135.473-2, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span>, Rut. <span class="variable" id="dato-rut">[RUT]</span>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
+        <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong>, representada legalmente por Doña <strong>Yoselyn Valesca Álvarez Duarte</strong>, Rut. <strong>16.135.473-2</strong>, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
-        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<span class="variable" id="dato-cargo">[Cargo]</span>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
+        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
 
         <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
@@ -128,7 +145,7 @@
 
         <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
 
-        <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <span class="variable" id="dato-termino-contrato">[Término Contrato]</span>.</p>
+        <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
 
         <p class="nueva-clausula"><strong>Séptimo. -</strong> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
         <ol type="a">
@@ -166,27 +183,27 @@
 
         <p class="nueva-clausula"><strong>Decimocuarto. -</strong> El/La trabajador/a hará uso del feriado anual que le corresponda en conformidad a la ley, en la época que señale el empleador, preferentemente en la época estival de acuerdo con las necesidades de la empresa, pudiendo el empleador fraccionar el feriado.</p>
 
-        <p class="nueva-clausula"><strong>Decimoquinto. -</strong> Se deja constancia que el/la trabajador/a ingresara a prestar servicios para el empleador el día <span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span>.</p>
+        <p class="nueva-clausula"><strong>Decimoquinto. -</strong> Se deja constancia que el/la trabajador/a ingresara a prestar servicios para el empleador el día <strong><span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span></strong>.</p>
 
         <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
 
-        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span> Rut. <span class="variable" id="dato-rut-2">[RUT]</span> acepta, que la documentation derivada de la relación laboral con Preomed Salud SpA, Rut. 76.500.919-7 pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
+        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
         
         <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
 
-        <p style="text-align: center; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
+        <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
 
         <div class="firmas">
             <div class="bloque-firma">
                 <div class="linea-firma"></div>
                 <strong>Firma Trabajador</strong><br>
-                Rut. <span class="variable" id="dato-rut-firma">[RUT]</span>
+                Rut. <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
             </div>
             
             <div class="bloque-firma">
                 <div class="linea-firma"></div>
                 <strong>Firma Empleador</strong><br>
-                Rut. 76.500.919-7
+                Rut. <strong>76.500.919-7</strong>
             </div>
         </div>
 
@@ -196,6 +213,7 @@
         const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXDG9g6eD5O1EmXpJlh5V_1ZWg-qI3cQ8J-2_LIbX99dkmVyeup0dKthK7hBhMnw/pub?output=csv"; 
         
         let listaTrabajadores = [];
+        let mesesDisponibles = []; 
 
         Papa.parse(urlGoogleSheet, {
             download: true,
@@ -207,7 +225,7 @@
                     alert("La base de datos se leyó correctamente, pero está vacía.");
                     return;
                 }
-                poblarSelector();
+                procesarMeses(); 
             },
             error: function() {
                 alert("Error al conectar con Google Drive.");
@@ -222,6 +240,103 @@
                 }
             }
             return null;
+        }
+
+        function obtenerFechaObjeto(fechaStr) {
+            if (!fechaStr || fechaStr.includes("[")) return null;
+            let textoLimpio = fechaStr.trim().split(" ")[0]; 
+            let partes = textoLimpio.split(/[-/]/);
+            if (partes.length === 3) {
+                let dia, mes, anio;
+                if (partes[0].length <= 2) {
+                    dia = parseInt(partes[0], 10);
+                    mes = parseInt(partes[1], 10) - 1;
+                    anio = parseInt(partes[2], 10);
+                } else {
+                    anio = parseInt(partes[0], 10);
+                    mes = parseInt(partes[1], 10) - 1;
+                    dia = parseInt(partes[2], 10);
+                }
+                if (anio < 100) anio += 2000;
+                let d = new Date(anio, mes, dia);
+                if (!isNaN(d.getTime())) return d;
+            }
+            return null;
+        }
+
+        function procesarMeses() {
+            let mapaMeses = {};
+            
+            listaTrabajadores.forEach((trabajador) => {
+                let inicioRaw = buscarPropiedad(trabajador, "iniciocontrato") || buscarPropiedad(trabajador, "inicio_contrato");
+                let fechaObj = obtenerFechaObjeto(inicioRaw);
+                
+                if (fechaObj) {
+                    let anio = fechaObj.getFullYear();
+                    let mes = fechaObj.getMonth();
+                    let clave = `${anio}-${mes.toString().padStart(2, '0')}`;
+                    
+                    if (!mapaMeses[clave]) {
+                        let nombreMes = fechaObj.toLocaleDateString('es-ES', { month: 'long' });
+                        nombreMes = nombreMes.charAt(0).toUpperCase() + nombreMes.slice(1);
+                        mapaMeses[clave] = {
+                            key: clave,
+                            label: `${nombreMes} ${anio}`,
+                            sortVal: fechaObj.getTime()
+                        };
+                    }
+                    trabajador._mesKey = clave; 
+                } else {
+                    trabajador._mesKey = "Desconocido";
+                }
+            });
+
+            mesesDisponibles = Object.values(mapaMeses);
+            mesesDisponibles.sort((a, b) => b.sortVal - a.sortVal);
+
+            const selectorMes = document.getElementById("selector-mes");
+            selectorMes.innerHTML = '<option value="Todos">Todos los meses</option>';
+            
+            mesesDisponibles.forEach(m => {
+                let op = document.createElement("option");
+                op.value = m.key;
+                op.text = m.label;
+                selectorMes.appendChild(op);
+            });
+
+            if (mesesDisponibles.length > 0) {
+                selectorMes.value = mesesDisponibles[0].key;
+            }
+            
+            actualizarListaTrabajadores();
+        }
+
+        function actualizarListaTrabajadores() {
+            const mesSeleccionado = document.getElementById("selector-mes").value;
+            const selectorTrabajador = document.getElementById("selector-trabajador");
+            
+            selectorTrabajador.innerHTML = '<option value="">-- Seleccione un trabajador --</option>';
+            const primeraColumna = Object.keys(listaTrabajadores[0])[0];
+
+            listaTrabajadores.forEach((trabajador, index) => {
+                if (mesSeleccionado === "Todos" || trabajador._mesKey === mesSeleccionado) {
+                    let nom = buscarPropiedad(trabajador, "nombres") || buscarPropiedad(trabajador, "nombre") || "";
+                    let pat = buscarPropiedad(trabajador, "apellidopaterno") || "";
+                    let mat = buscarPropiedad(trabajador, "apellidomaterno") || "";
+                    
+                    let nombreCompleto = `${nom} ${pat} ${mat}`.trim();
+                    let nombreMostrado = nombreCompleto !== "" ? nombreCompleto : trabajador[primeraColumna];
+                    
+                    if(nombreMostrado) {
+                        let opcion = document.createElement("option");
+                        opcion.value = index;
+                        opcion.text = nombreMostrado;
+                        selectorTrabajador.appendChild(opcion);
+                    }
+                }
+            });
+            
+            actualizarContrato();
         }
 
         function formatearRut(valor) {
@@ -267,28 +382,6 @@
                 }
             }
             return fechaStr; 
-        }
-
-        function poblarSelector() {
-            const selector = document.getElementById("selector-trabajador");
-            selector.innerHTML = '<option value="">-- Seleccione un trabajador --</option>';
-            const primeraColumna = Object.keys(listaTrabajadores[0])[0];
-
-            listaTrabajadores.forEach((trabajador, index) => {
-                let nom = buscarPropiedad(trabajador, "nombres") || buscarPropiedad(trabajador, "nombre") || "";
-                let pat = buscarPropiedad(trabajador, "apellidopaterno") || "";
-                let mat = buscarPropiedad(trabajador, "apellidomaterno") || "";
-                
-                let nombreCompleto = `${nom} ${pat} ${mat}`.trim();
-                let nombreMostrado = nombreCompleto !== "" ? nombreCompleto : trabajador[primeraColumna];
-                
-                if(nombreMostrado) {
-                    let opcion = document.createElement("option");
-                    opcion.value = index;
-                    opcion.text = nombreMostrado;
-                    selector.appendChild(opcion);
-                }
-            });
         }
 
         function actualizarContrato() {
