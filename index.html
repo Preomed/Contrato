@@ -8,7 +8,7 @@
     
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Aptos Display', Calibri, Arial, sans-serif; /* Nueva tipografía aplicada */
             font-size: 12pt;
             line-height: 1.5;
             color: #000;
@@ -25,13 +25,14 @@
             margin-bottom: 20px;
             border-radius: 8px;
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Aptos Display', Arial, sans-serif;
         }
 
         select, button {
             padding: 10px;
             font-size: 16px;
             margin: 5px;
+            font-family: inherit;
         }
 
         button {
@@ -79,6 +80,7 @@
 
         /* Estilos de Impresión */
         @media print {
+            /* Formato Carta (Letter) con márgenes requeridos */
             @page { size: letter; margin: 2.5cm; }
             body { background-color: transparent; margin: 0; padding: 0; max-width: 100%; }
             .contenedor-carta { box-shadow: none; padding: 0; }
@@ -122,7 +124,7 @@
             <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
             <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
         </ol>
-        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en cuenta chequera electrónica, cuenta corriente, cuenta RUT u otra que el/la trabajador/a posea siendo titular de dicha cuenta y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
+        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
 
         <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
 
@@ -168,7 +170,7 @@
 
         <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
 
-        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span> Rut. <span class="variable" id="dato-rut-2">[RUT]</span> acepta, que la documentación derivada de la relación laboral con Preomed Salud SpA, Rut. 76.500.919-7 pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
+        <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span> Rut. <span class="variable" id="dato-rut-2">[RUT]</span> acepta, que la documentation derivada de la relación laboral con Preomed Salud SpA, Rut. 76.500.919-7 pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
         
         <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
 
@@ -326,6 +328,9 @@
                 const colacionRaw = buscarPropiedad(datos, "colacion") || buscarPropiedad(datos, "colación") || "";
                 const movilizacionRaw = buscarPropiedad(datos, "movilizacion") || buscarPropiedad(datos, "movilización") || "";
 
+                const banco = buscarPropiedad(datos, "banco") || buscarPropiedad(datos, "institucionbancaria") || "[Banco]";
+                const cuenta = buscarPropiedad(datos, "cuenta") || buscarPropiedad(datos, "numerocuenta") || buscarPropiedad(datos, "numero_cuenta") || "[cuenta]";
+
                 // Formatos
                 const rutFormateado = formatearRut(rutRaw);
                 const fechaNacTexto = formatearFecha(fechaNacRaw, false);
@@ -361,6 +366,9 @@
                 
                 document.getElementById("dato-sueldo").innerText = sueldoFormat;
                 
+                document.getElementById("dato-banco").innerText = banco;
+                document.getElementById("dato-cuenta").innerText = cuenta;
+
                 document.getElementById("dato-centro-costo-intro").innerText = centroCosto;
                 document.getElementById("dato-inicio-contrato-intro").innerText = inicioContratoLargo;
                 
@@ -379,11 +387,8 @@
                     document.getElementById("dato-tiempo-colacion").innerText = tiempoColacion;
                 }
 
-                // ========================================================
-                // LÓGICA CONDICIONAL: OCULTAR BONOS SI SON 0
-                // ========================================================
+                // Lógica Condicional: Ocultar Bonos si son 0 o vacío
                 const liColacion = document.getElementById("li-colacion");
-                // Extracción limpia solo para verificar si el valor es numéricamente cero o vacío
                 const numColacion = colacionRaw.toString().replace(/[^\d]/g, ''); 
                 if (numColacion === "0" || numColacion === "") {
                     liColacion.style.display = "none";
@@ -405,7 +410,7 @@
                 document.getElementById("dato-inicio-contrato-clausula").innerText = inicioContratoCorto;
                 
             } else {
-                // Resetear todo al deseleccionar
+                // Resetear
                 document.getElementById("dato-nombres").innerText = "[Nombres]";
                 document.getElementById("dato-nombres-2").innerText = "[Nombres]";
                 document.getElementById("dato-paterno").innerText = "[Apellido Paterno]";
@@ -427,6 +432,9 @@
                 document.getElementById("dato-cargo").innerText = "[Cargo]";
                 document.getElementById("dato-sueldo").innerText = "[Sueldo Base]";
                 
+                document.getElementById("dato-banco").innerText = "[Banco]";
+                document.getElementById("dato-cuenta").innerText = "[cuenta]";
+
                 document.getElementById("dato-centro-costo-intro").innerText = "[Centro de Costo]";
                 document.getElementById("dato-inicio-contrato-intro").innerText = "[Inicio Contrato]";
                 document.getElementById("dato-centro-costo").innerText = "[Centro de Costo]";
@@ -434,7 +442,6 @@
                 document.getElementById("dato-jornada").innerText = "[Jornada]";
                 document.getElementById("dato-horario").innerText = "[Horario]";
                 
-                // Restablecer visibilidad de bloques y bonos
                 document.getElementById("bloque-descanso").style.display = "inline";
                 document.getElementById("dato-tiempo-colacion").innerText = "[Tiempo Colación]";
                 
