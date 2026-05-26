@@ -205,7 +205,7 @@
                             <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
                             <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
                         </ol>
-                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
+                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
 
                         <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
 
@@ -512,6 +512,7 @@
 
                 const banco = buscarPropiedad(datos, "banco") || buscarPropiedad(datos, "institucionbancaria") || "[Banco]";
                 const cuenta = buscarPropiedad(datos, "cuenta") || buscarPropiedad(datos, "numerocuenta") || buscarPropiedad(datos, "numero_cuenta") || "[cuenta]";
+                const tipoCuenta = buscarPropiedad(datos, "tipocuenta") || buscarPropiedad(datos, "tipo_cuenta") || "[Tipo de Cuenta]";
 
                 // Formatos
                 const rutFormateado = formatearRut(rutRaw);
@@ -549,6 +550,7 @@
                 asignarTextoSeguro("dato-sueldo", sueldoFormat);
                 asignarTextoSeguro("dato-banco", banco);
                 asignarTextoSeguro("dato-cuenta", cuenta);
+                asignarTextoSeguro("dato-tipo-cuenta", tipoCuenta);
 
                 asignarTextoSeguro("dato-centro-costo-intro", centroCosto);
                 asignarTextoSeguro("dato-inicio-contrato-intro", inicioContratoLargo);
@@ -617,6 +619,7 @@
                 
                 asignarTextoSeguro("dato-banco", "[Banco]");
                 asignarTextoSeguro("dato-cuenta", "[cuenta]");
+                asignarTextoSeguro("dato-tipo-cuenta", "[Tipo de Cuenta]");
 
                 asignarTextoSeguro("dato-centro-costo-intro", "[Centro de Costo]");
                 asignarTextoSeguro("dato-inicio-contrato-intro", "[Inicio Contrato]");
