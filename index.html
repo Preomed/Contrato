@@ -205,7 +205,7 @@
                             <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
                             <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
                         </ol>
-                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
+                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el Banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
 
                         <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
 
@@ -292,7 +292,7 @@
     </div>
 
     <script>
-        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXDG9g6eD5O1EmXpJlh5V_1ZWg-qI3cQ8J-2_LIbX99dkmVyeup0dKthK7hBhMnw/pub?output=csv"; 
+        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRlUQ9n7nlGqM9XXn6_170lIIlXso1THXFaN375Y_LXzGPIMHe0dBdgVrKE7AnNTuoBmNAL5kvJOaL5/pub?gid=1260108930&single=true&output=csv"; 
         
         let listaTrabajadores = [];
         let mesesDisponibles = []; 
@@ -512,7 +512,19 @@
 
                 const banco = buscarPropiedad(datos, "banco") || buscarPropiedad(datos, "institucionbancaria") || "[Banco]";
                 const cuenta = buscarPropiedad(datos, "cuenta") || buscarPropiedad(datos, "numerocuenta") || buscarPropiedad(datos, "numero_cuenta") || "[cuenta]";
-                const tipoCuenta = buscarPropiedad(datos, "tipocuenta") || buscarPropiedad(datos, "tipo_cuenta") || "[Tipo de Cuenta]";
+                let tipoCuenta = buscarPropiedad(datos, "tipocuenta") || buscarPropiedad(datos, "tipo_cuenta") || "[Tipo de Cuenta]";
+
+                // Lógica para limpiar el tipo de cuenta y dejar solo corriente, vista o RUT
+                if (tipoCuenta !== "[Tipo de Cuenta]") {
+                    let tcLower = tipoCuenta.toLowerCase();
+                    if (tcLower.includes("corriente")) {
+                        tipoCuenta = "corriente";
+                    } else if (tcLower.includes("vista")) {
+                        tipoCuenta = "vista";
+                    } else if (tcLower.includes("rut")) {
+                        tipoCuenta = "RUT";
+                    }
+                }
 
                 // Formatos
                 const rutFormateado = formatearRut(rutRaw);
