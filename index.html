@@ -108,7 +108,7 @@
         .nueva-clausula { margin-top: 15px; }
         
         ol { margin-top: 0; margin-bottom: 15px; padding-left: 60px; }
-        ol li { margin-bottom: 5px; text-align: justify; }
+        ol li { text-align: justify; } /* Eliminado el margin-bottom global aquí para evitar conflictos */
 
         .firmas { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 40px; }
         .bloque-firma { text-align: center; width: 40%; position: relative; }
@@ -200,41 +200,41 @@
 
                         <p class="nueva-clausula"><strong>Cuarto. -</strong> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
                         <ol type="a">
-                            <li>Sueldo Base Mensual <span class="variable" id="dato-sueldo">[Sueldo Base]</span> .- (proporcional a los días trabajados en el mes)</li>
-                            <li>La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
-                            <li id="li-colacion">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
-                            <li id="li-movilizacion">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">Sueldo Base Mensual <span class="variable" id="dato-sueldo">[Sueldo Base]</span> .- (proporcional a los días trabajados en el mes)</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
+                            <li id="li-colacion" style="margin-top: 0; margin-bottom: 0;">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
+                            <li id="li-movilizacion" style="margin-top: 0; margin-bottom: 0;">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
                         </ol>
                         <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el Banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
 
-                        <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se pagarán mensualmente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo, mediante transferencia electrónica o depósito en la cuenta bancaria indicada por el/la trabajador/a en la cláusula precedente, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del mismo cuerpo legal.</p>
-                        <p>De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
-                        <p>Finalmente, el/la trabajador/a autoriza de manera expresa al Empleador para que descuente de sus remuneraciones el valor correspondiente al tiempo no trabajado, ya sea por atrasos, inasistencias injustificadas o permisos sin goce de sueldo, toda vez que el pago de la remuneración está directamente subordinado a la prestación efectiva de los servicios.</p>
+                        <p class="nueva-clausula" style="margin-bottom: 0;"><strong>Quinto. -</strong> Las remuneraciones se pagarán mensualmente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo, mediante transferencia electrónica o depósito en la cuenta bancaria indicada por el/la trabajador/a en la cláusula precedente, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del mismo cuerpo legal.</p>
+                        <p style="margin-top: 0; margin-bottom: 0;">De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
+                        <p style="margin-top: 0;">Finalmente, el/la trabajador/a autoriza de manera expresa al Empleador para que descuente de sus remuneraciones el valor correspondiente al tiempo no trabajado, ya sea por atrasos, inasistencias injustificadas o permisos sin goce de sueldo, toda vez que el pago de la remuneración está directamente subordinado a la prestación efectiva de los servicios.</p>
 
                         <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
 
                         <p class="nueva-clausula"><strong>Séptimo. -</strong> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
                         <ol type="a">
-                            <li>desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
-                            <li>efectuar su trabajo en forma educada, manteniendo un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
-                            <li>emplear la máxima diligencia en el cuidado del equipo de trabajo, instalaciones del empleador y en general, de todos los bienes de la empresa;</li>
-                            <li>cuidar de la conservación, buen estado, aseo y uso adecuado de las instalaciones y materiales, evitando pérdidas y deterioros o gastos innecesarios;</li>
-                            <li>llegar puntualmente a su trabajo y registrar diariamente sus horas de entrada y salida;</li>
-                            <li>avisar oportunamente las ausencias y su motivo;</li>
-                            <li>comunicar dentro de las 48 horas siguientes de sucedido un cambio en los antecedentes personales, cambio de domicilio y que deben ser considerados en el contrato de trabajo;</li>
-                            <li>mantener una adecuada higiene personal.</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">efectuar su trabajo en forma educada, manteniendo un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">emplear la máxima diligencia en el cuidado del equipo de trabajo, instalaciones del empleador y en general, de todos los bienes de la empresa;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">cuidar de la conservación, buen estado, aseo y uso adecuado de las instalaciones y materiales, evitando pérdidas y deterioros o gastos innecesarios;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">llegar puntualmente a su trabajo y registrar diariamente sus horas de entrada y salida;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">avisar oportunamente las ausencias y su motivo;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">comunicar dentro de las 48 horas siguientes de sucedido un cambio en los antecedentes personales, cambio de domicilio y que deben ser considerados en el contrato de trabajo;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">mantener una adecuada higiene personal.</li>
                         </ol>
 
                         <p class="nueva-clausula"><strong>Octavo. -</strong> Las partes acuerdan establecer como prohibición expresa que el/la trabajador/a ejecute para terceros negociaciones o servicios que se encuentre dentro del giro del negocio del empleador, así como prestar su servicio a terceros que realicen un giro similar al del empleador. En caso de infracción a la prohibición señalada en el inciso anterior, el empleador queda habilitado para proceder conforme al N°2 del artículo 160 del Código del Trabajo. Este contrato terminará en los casos señalados en los artículos 159, 160 y 161 del Código del Trabajo. Para los efectos del N°1° del referido artículo 160, constituyen falta de probidad destinar para su uso personal o autorizar el uso por parte de terceros de bienes de la empresa, sin autorización expresa del empleador. Y para los efectos del N°7° del mismo artículo 160, constituyen incumplimiento grave de las obligaciones que impone el contrato, el no cumplimiento de las obligaciones estipuladas en la cláusula Séptima del presente contrato, además de las siguientes prohibiciones:</p>
                         <ol type="a">
-                            <li>presentarse a cumplir sus funciones en estado de intemperancia o bajo los efectos de drogas o sustancias psicotrópicas, consumir bebidas alcohólicas, drogas o sustancias psicotrópicas dentro de la jornada de trabajo o introducir dichas sustancias al lugar de trabajo;</li>
-                            <li>atrasos reiterados en el inicio de su jornada de trabajo;</li>
-                            <li>fumar durante la jornada de trabajo;</li>
-                            <li>ejecutar durante las horas de trabajo y en el desempeño de sus funciones actividades ajenas a su labor y al establecimiento, dedicarse a atender asuntos o negocios particulares;</li>
-                            <li>otorgar conocimiento a terceros o utilizar de cualquier manera y para provecho propio, la información propia del empleador;</li>
-                            <li>infringir las normas de seguridad establecidas en el Reglamento Interno de Orden Higiene y Seguridad;</li>
-                            <li>resistirse a acatar las órdenes e instrucciones de sus jefes;</li>
-                            <li>no registrar su asistencia y atrasos en forma debida en el registro de asistencia.</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">presentarse a cumplir sus funciones en estado de intemperancia o bajo los efectos de drogas o sustancias psicotrópicas, consumir bebidas alcohólicas, drogas o sustancias psicotrópicas dentro de la jornada de trabajo o introducir dichas sustancias al lugar de trabajo;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">atrasos reiterados en el inicio de su jornada de trabajo;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">fumar durante la jornada de trabajo;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">ejecutar durante las horas de trabajo y en el desempeño de sus funciones actividades ajenas a su labor y al establecimiento, dedicarse a atender asuntos o negocios particulares;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">otorgar conocimiento a terceros o utilizar de cualquier manera y para provecho propio, la información propia del empleador;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">infringir las normas de seguridad establecidas en el Reglamento Interno de Orden Higiene y Seguridad;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">resistirse a acatar las órdenes e instrucciones de sus jefes;</li>
+                            <li style="margin-top: 0; margin-bottom: 0;">no registrar su asistencia y atrasos en forma debida en el registro de asistencia.</li>
                         </ol>
 
                         <p class="nueva-clausula"><strong>Noveno. -</strong> Las partes convienen en elevar la calidad de esencial de este contrato, la obligatoriedad para el/la trabajador/a de cumplir celosamente con el Reglamento Interno de Orden, Higiene y Seguridad de la empresa, y sus eventuales modificaciones cuyo texto recibe en este acto, según consta en el presente contrato y en documento anexo de recepción de este. Igualmente, el/la trabajador/a declara conocer el texto íntegro de dicho Reglamento y sus modificaciones, el cual se entiende como parte integrante de este contrato, de tal manera, que su desobediencia o transgresión se estimará como incumplimiento grave a las obligaciones que impone el contrato, pudiendo el empleador poner término a este de inmediato y sin indemnización alguna.</p>
