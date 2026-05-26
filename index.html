@@ -207,7 +207,9 @@
                         </ol>
                         <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el Banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
 
-                        <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se cancelarán mensualmente en las oficinas de la empresa y de acuerdo con los plazos del Art. 55 del Código del Trabajo, de las sumas anteriores se deducirán los impuestos que las graven, las cotizaciones de seguridad social y otras, en conformidad a lo establecido en el artículo 58 del Código del Trabajo. El/la trabajador/a deja expresa constancia que autoriza a su Empleador para que le descuente de sus remuneraciones el tiempo no trabajado, ya sea por inasistencias o permisos.</p>
+                        <p class="nueva-clausula"><strong>Quinto. -</strong> Las remuneraciones se pagarán mensualmente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo, mediante transferencia electrónica o depósito en la cuenta bancaria indicada por el/la trabajador/a en la cláusula precedente, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del mismo cuerpo legal.</p>
+                        <p>De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
+                        <p>Finalmente, el/la trabajador/a autoriza de manera expresa al Empleador para que descuente de sus remuneraciones el valor correspondiente al tiempo no trabajado, ya sea por atrasos, inasistencias injustificadas o permisos sin goce de sueldo, toda vez que el pago de la remuneración está directamente subordinado a la prestación efectiva de los servicios.</p>
 
                         <p class="nueva-clausula"><strong>Sexto. -</strong> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
 
@@ -249,7 +251,7 @@
 
                         <p class="nueva-clausula"><strong>Decimoquinto. -</strong> Se deja constancia que el/la trabajador/a ingresara a prestar servicios para el empleador el día <strong><span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span></strong>.</p>
 
-                        <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de Antofagasta y prorrogan competencia ante sus tribunales.</p>
+                        <p class="nueva-clausula"><strong>Decimosexto. -</strong> Para todos los efectos derivados de este contrato, las partes fijan su domicilio en la ciudad de <span class="variable" id="dato-centro-costo-16">[Centro de Costo]</span> y prorrogan competencia ante sus tribunales.</p>
 
                         <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
         
@@ -526,6 +528,15 @@
                     }
                 }
 
+                // Lógica para limpiar el nombre de la ciudad en introducción y cláusula 16
+                let centroCostoCiudad = centroCosto;
+                if (centroCosto !== "[Centro de Costo]") {
+                    let ccLower = centroCosto.trim().toLowerCase();
+                    if (ccLower === "antofagasta centro" || ccLower === "antofagasta norte") {
+                        centroCostoCiudad = "Antofagasta";
+                    }
+                }
+
                 // Formatos
                 const rutFormateado = formatearRut(rutRaw);
                 const fechaNacTexto = formatearFecha(fechaNacRaw, false);
@@ -564,7 +575,8 @@
                 asignarTextoSeguro("dato-cuenta", cuenta);
                 asignarTextoSeguro("dato-tipo-cuenta", tipoCuenta);
 
-                asignarTextoSeguro("dato-centro-costo-intro", centroCosto);
+                asignarTextoSeguro("dato-centro-costo-intro", centroCostoCiudad);
+                asignarTextoSeguro("dato-centro-costo-16", centroCostoCiudad);
                 asignarTextoSeguro("dato-inicio-contrato-intro", inicioContratoLargo);
                 asignarTextoSeguro("dato-centro-costo", centroCosto);
                 asignarTextoSeguro("dato-direccion-centro-costo", direccionCentroCosto);
@@ -634,6 +646,7 @@
                 asignarTextoSeguro("dato-tipo-cuenta", "[Tipo de Cuenta]");
 
                 asignarTextoSeguro("dato-centro-costo-intro", "[Centro de Costo]");
+                asignarTextoSeguro("dato-centro-costo-16", "[Centro de Costo]");
                 asignarTextoSeguro("dato-inicio-contrato-intro", "[Inicio Contrato]");
                 asignarTextoSeguro("dato-centro-costo", "[Centro de Costo]");
                 asignarTextoSeguro("dato-direccion-centro-costo", "[Dirección Centro de Costo]");
