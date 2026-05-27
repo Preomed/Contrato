@@ -83,7 +83,7 @@
 
                         <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong>, representada legalmente por Doña <strong>Yoselyn Valesca Álvarez Duarte</strong>, Rut. <strong>16.135.473-2</strong>, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
-                        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
+                        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al effecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
 
                         <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
@@ -506,8 +506,16 @@
                 asignarTextoSeguro("dato-termino-contrato", terminoContratoCorto);
                 asignarTextoSeguro("dato-inicio-contrato-clausula", inicioContratoCorto);
                 
+                // 🌟 NUEVA LÓGICA PARA EL NOMBRE DEL ARCHIVO EN FORMATO dd.mm.aaaa
                 let primerNombre = nombres.trim().split(" ")[0];
-                let fechaPuntos = inicioContratoCorto ? inicioContratoCorto.replace(/\//g, ".") : "";
+                let fechaPuntos = "";
+                const fechaObj = obtenerFechaObjeto(inicioContratoRaw);
+                if (fechaObj) {
+                    let dia = String(fechaObj.getDate()).padStart(2, '0');
+                    let mes = String(fechaObj.getMonth() + 1).padStart(2, '0');
+                    let anio = fechaObj.getFullYear();
+                    fechaPuntos = `${dia}.${mes}.${anio}`;
+                }
                 
                 if (primerNombre && paterno && fechaPuntos) {
                     document.title = "Contrato de Trabajo - " + primerNombre + " " + paterno + " - " + fechaPuntos;
