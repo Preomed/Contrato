@@ -7,146 +7,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     
     <style>
-        body {
-            font-family: 'Aptos Display', Calibri, Arial, sans-serif;
-            font-size: 9pt;
-            line-height: 1.5;
-            color: #000;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        /* Panel de control superior */
-        .controles {
-            background: #e9ecef;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-family: 'Aptos Display', Arial, sans-serif;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            font-size: 12pt;
-        }
-
-        .controles label {
-            font-size: 14px;
-            margin-left: 10px;
-        }
-
-        select, button {
-            padding: 10px;
-            font-size: 14px;
-            font-family: inherit;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-left: 15px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Estructura de la carta */
-        .contenedor-carta {
-            background-color: #fff;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: justify;
-        }
-
-        /* Estructura de tabla para repetición de encabezado y pie de página */
-        .tabla-impresion {
-            width: 100%;
-            border-collapse: collapse;
-            border: none;
-        }
-
-        /* Reglas clave para forzar la repetición en impresoras */
+        body { font-family: 'Aptos Display', Calibri, Arial, sans-serif; font-size: 9pt; line-height: 1.5; color: #000; max-width: 800px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; }
+        .controles { background: #e9ecef; padding: 20px; margin-bottom: 20px; border-radius: 8px; text-align: center; font-family: 'Aptos Display', Arial, sans-serif; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; font-size: 12pt; }
+        .controles label { font-size: 14px; margin-left: 10px; }
+        select, button { padding: 10px; font-size: 14px; font-family: inherit; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; margin-left: 15px; }
+        button:hover { background-color: #0056b3; }
+        .contenedor-carta { background-color: #fff; padding: 40px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: justify; }
+        .tabla-impresion { width: 100%; border-collapse: collapse; border: none; }
         thead { display: table-header-group; }
         tfoot { display: table-footer-group; }
-
-        .encabezado-repetido {
-            text-align: left;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .logo-empresa {
-            max-height: 40px;
-            width: auto;
-        }
-
-        /* Pie de página con el texto CONTRATO DE TRABAJO */
-        .pie-pagina-contenido {
-            text-align: center;
-            font-weight: bold;
-            font-size: 10pt;
-            color: #555;
-            padding-top: 15px;
-            height: 30px;
-        }
-
+        .encabezado-repetido { text-align: left; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid #ddd; }
+        .logo-empresa { max-height: 40px; width: auto; }
+        .pie-pagina-contenido { text-align: center; font-weight: bold; font-size: 10pt; color: #555; padding-top: 15px; height: 30px; }
         h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; margin-top: 10px; }
         p { margin-bottom: 15px; text-indent: 40px; }
         p.sin-sangria { text-indent: 0; }
-        
-        /* Clase para separar las cláusulas */
         .nueva-clausula { margin-top: 15px; }
-        
         ol { margin-top: 0; margin-bottom: 15px; padding-left: 60px; }
-        ol li { text-align: justify; } /* Eliminado el margin-bottom global aquí para evitar conflictos */
-
+        ol li { text-align: justify; } 
         .firmas { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 40px; }
         .bloque-firma { text-align: center; width: 40%; position: relative; }
         .linea-firma { border-top: 1px solid #000; margin-bottom: 5px; }
-
-        /* Contenedor y estilo de la firma digital */
-        .contenedor-firma-digital {
-            height: 78px; 
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            margin-bottom: 5px;
-        }
-        .img-firma-empleador {
-            max-height: 78px; 
-            max-width: 234px; 
-            width: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Resalta las variables en pantalla */
+        .contenedor-firma-digital { height: 78px; display: flex; justify-content: center; align-items: flex-end; margin-bottom: 5px; }
+        .img-firma-empleador { max-height: 78px; max-width: 234px; width: auto; display: block; margin: 0 auto; }
         .variable { background-color: #fff3cd; font-weight: bold; transition: 0.3s; }
-        
-        /* Permite que el bloque de horario respete los saltos de línea */
         .formato-bloque { display: block; white-space: pre-line; padding-left: 60px; text-indent: 0; }
 
-        /* Estilos de Impresión */
         @media print {
             @page { 
                 size: letter; 
                 margin: 1cm 1.5cm; 
-                @bottom-right {
-                    content: "Página " counter(page) " de " counter(pages);
-                    font-family: 'Aptos Display', Calibri, sans-serif;
-                    font-size: 8pt;
-                    color: #666;
-                }
+                @bottom-right { content: "Página " counter(page) " de " counter(pages); font-family: 'Aptos Display', Calibri, sans-serif; font-size: 8pt; color: #666; }
             }
             body { background-color: transparent; margin: 0; padding: 0; max-width: 100%; }
             .contenedor-carta { box-shadow: none; padding: 0; }
@@ -191,9 +83,9 @@
 
                         <p>En <span class="variable" id="dato-centro-costo-intro">[Centro de Costo]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong>, representada legalmente por Doña <strong>Yoselyn Valesca Álvarez Duarte</strong>, Rut. <strong>16.135.473-2</strong>, ambos con domicilio comercial en la ciudad de Antofagasta, calle Las Bandurrias n° 9078, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <span class="variable" id="dato-salud">[Salud]</span> y como sistema de previsión <span class="variable" id="dato-afp">[AFP]</span>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
-                        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
+                        <p class="nueva-clausula"><strong>Primero. -</strong> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al effecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñara el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
 
-                        <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
+                        <p class="nueva-clausula"><strong>Segundo. -</strong> Los servicios serán prestados en el centro médico ubicado en <span class="variable" id="dato-centro-costo">[Centro de Costo]</span>, <span class="variable" id="dato-direccion-centro-costo">[Dirección Centro de Costo]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
                         <p class="nueva-clausula"><strong>Tercero. -</strong> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribución de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
                         <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
@@ -205,7 +97,7 @@
                             <li id="li-colacion" style="margin-top: 0; margin-bottom: 0;">Bono no Imponible de Colación <span class="variable" id="dato-colacion">[Colación]</span> .- (proporcional a los días trabajados en el mes)</li>
                             <li id="li-movilizacion" style="margin-top: 0; margin-bottom: 0;">Bono no Imponible de Movilización <span class="variable" id="dato-movilizacion">[Movilización]</span> .- (proporcional a los días trabajados en el mes)</li>
                         </ol>
-                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante depósito en el Banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicho depósito.</p>
+                        <p>Las remuneraciones se pagarán mensualmente por periodo vencido, a más tardar el 2° día hábil de cada mes calendario, en moneda nacional mediante transferencia electrónica en el Banco <span class="variable" id="dato-banco">[Banco]</span> cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> n° <span class="variable" id="dato-cuenta">[cuenta]</span> y para lo cual el/la trabajador/a en este acto otorga expresa y amplia autorización a la empresa para efectuar dicha transferencia.</p>
 
                         <p class="nueva-clausula" style="margin-bottom: 0;"><strong>Quinto. -</strong> Las remuneraciones se pagarán mensualmente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo, mediante transferencia electrónica o depósito en la cuenta bancaria indicada por el/la trabajador/a en la cláusula precedente, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del mismo cuerpo legal.</p>
                         <p style="margin-top: 0; margin-bottom: 0;">De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
@@ -255,7 +147,7 @@
 
                         <p class="nueva-clausula"><strong>Decimoséptimo. -</strong> Por intermedio de este acto, <strong><span class="variable" id="dato-nombres-2">[Nombres]</span> <span class="variable" id="dato-paterno-2">[Apellido Paterno]</span> <span class="variable" id="dato-materno-2">[Apellido Materno]</span></strong> Rut. <strong><span class="variable" id="dato-rut-2">[RUT]</span></strong> acepta, que la documentación derivada de la relación laboral con <strong>Preomed Salud SpA</strong>, Rut. <strong>76.500.919-7</strong> pueda ser confeccionada, procesada, firmada y remitida de manera electrónica. Asimismo, acepta que la documentación laboral pueda ser firmada electrónicamente mediante la Plataforma de Gestor Documental de BUK.</p>
         
-                        <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a en el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalidad, su documentación laboral será firmada y entregada en soporte papel.</p>
+                        <p>La documentación laboral será remitida de acuerdo con los antecedentes proporcionados por el/la trabajador/a in el presente contrato, a la cuenta de correo electrónico personal <span class="variable" id="dato-correo-2">[Correo Electrónico]</span>. En el caso de no acordar esta modalid, su documentación laboral será firmada y entregada en soporte papel.</p>
 
                         <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman electrónicamente a través de la plataforma BUK.</p>
 
@@ -312,7 +204,7 @@
                 procesarMeses(); 
             },
             error: function() {
-                alert("Error al conectar con Google Drive.");
+                alert("Error al conectar con Google Drive. Asegúrate de que el Google Sheet tenga permisos de 'Cualquier persona con el enlace'.");
             }
         });
 
@@ -516,7 +408,6 @@
                 const cuenta = buscarPropiedad(datos, "cuenta") || buscarPropiedad(datos, "numerocuenta") || buscarPropiedad(datos, "numero_cuenta") || "[cuenta]";
                 let tipoCuenta = buscarPropiedad(datos, "tipocuenta") || buscarPropiedad(datos, "tipo_cuenta") || "[Tipo de Cuenta]";
 
-                // Lógica para limpiar el tipo de cuenta y dejar solo corriente, vista o RUT
                 if (tipoCuenta !== "[Tipo de Cuenta]") {
                     let tcLower = tipoCuenta.toLowerCase();
                     if (tcLower.includes("corriente")) {
@@ -528,7 +419,6 @@
                     }
                 }
 
-                // Lógica para limpiar el nombre de la ciudad en introducción y cláusula 16
                 let centroCostoCiudad = centroCosto;
                 if (centroCosto !== "[Centro de Costo]") {
                     let ccLower = centroCosto.trim().toLowerCase();
@@ -537,7 +427,6 @@
                     }
                 }
 
-                // Formatos
                 const rutFormateado = formatearRut(rutRaw);
                 const fechaNacTexto = formatearFecha(fechaNacRaw, false);
                 const inicioContratoLargo = formatearFecha(inicioContratoRaw, true);
@@ -547,7 +436,6 @@
                 const colacionFormat = formatearDineroConSigno(colacionRaw);
                 const movilizacionFormat = formatearDineroConSigno(movilizacionRaw);
 
-                // Asignaciones Seguras
                 asignarTextoSeguro("dato-nombres", nombres);
                 asignarTextoSeguro("dato-nombres-2", nombres);
                 asignarTextoSeguro("dato-paterno", paterno);
@@ -618,8 +506,24 @@
                 asignarTextoSeguro("dato-termino-contrato", terminoContratoCorto);
                 asignarTextoSeguro("dato-inicio-contrato-clausula", inicioContratoCorto);
                 
+                // 🌟 NUEVA LÓGICA PARA EL NOMBRE DEL ARCHIVO EN FORMATO dd.mm.aaaa
+                let primerNombre = nombres.trim().split(" ")[0];
+                let fechaPuntos = "";
+                const fechaObj = obtenerFechaObjeto(inicioContratoRaw);
+                if (fechaObj) {
+                    let dia = String(fechaObj.getDate()).padStart(2, '0');
+                    let mes = String(fechaObj.getMonth() + 1).padStart(2, '0');
+                    let anio = fechaObj.getFullYear();
+                    fechaPuntos = `${dia}.${mes}.${anio}`;
+                }
+                
+                if (primerNombre && paterno && fechaPuntos) {
+                    document.title = "Contrato de Trabajo - " + primerNombre + " " + paterno + " - " + fechaPuntos;
+                } else {
+                    document.title = "Contrato de Trabajo Dinámico - Preomed";
+                }
+                
             } else {
-                // Resetear
                 asignarTextoSeguro("dato-nombres", "[Nombres]");
                 asignarTextoSeguro("dato-nombres-2", "[Nombres]");
                 asignarTextoSeguro("dato-paterno", "[Apellido Paterno]");
@@ -667,6 +571,8 @@
                 
                 asignarTextoSeguro("dato-termino-contrato", "[Término Contrato]");
                 asignarTextoSeguro("dato-inicio-contrato-clausula", "[Inicio Contrato]");
+                
+                document.title = "Contrato de Trabajo Dinámico - Preomed";
             }
         }
     </script>
