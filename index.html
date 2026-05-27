@@ -186,7 +186,8 @@
     </div>
 
     <script>
-        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRlUQ9n7nlGqM9XXn6_170lIIlXso1THXFaN375Y_LXzGPIMHe0dBdgVrKE7AnNTuoBmNAL5kvJOaL5/pub?gid=1260108930&single=true&output=csv"; 
+        // 🌟 AQUÍ ESTÁ EL ENLACE ACTUALIZADO CON FORMATO CSV:
+        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/1fg0VoU_ittotnSh3nmBYtjJpypG2BAyW-SCdHYJHKqI/export?format=csv"; 
         
         let listaTrabajadores = [];
         let mesesDisponibles = []; 
@@ -204,7 +205,7 @@
                 procesarMeses(); 
             },
             error: function() {
-                alert("Error al conectar con Google Drive.");
+                alert("Error al conectar con Google Drive. Asegúrate de que el Google Sheet tenga permisos de 'Cualquier persona con el enlace'.");
             }
         });
 
@@ -506,7 +507,6 @@
                 asignarTextoSeguro("dato-termino-contrato", terminoContratoCorto);
                 asignarTextoSeguro("dato-inicio-contrato-clausula", inicioContratoCorto);
                 
-                // 🌟 MAGIA DEL NOMBRE DEL ARCHIVO: Cambia el título de la pestaña para que el PDF se guarde bien
                 let primerNombre = nombres.trim().split(" ")[0];
                 let fechaPuntos = inicioContratoCorto ? inicioContratoCorto.replace(/\//g, ".") : "";
                 
@@ -565,7 +565,6 @@
                 asignarTextoSeguro("dato-termino-contrato", "[Término Contrato]");
                 asignarTextoSeguro("dato-inicio-contrato-clausula", "[Inicio Contrato]");
                 
-                // Si no hay trabajador seleccionado, vuelve al título por defecto
                 document.title = "Contrato de Trabajo Dinámico - Preomed";
             }
         }
