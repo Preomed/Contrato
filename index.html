@@ -48,10 +48,10 @@
             .controles { display: none !important; }
             .variable { background-color: transparent; font-weight: inherit; }
             
-            /* Se eliminó 'ol' para que las listas largas puedan dividirse de forma natural entre las páginas */
-            p, li, .formato-bloque { page-break-inside: avoid; break-inside: avoid; }
+            /* Se ha removido 'p' para permitir que los párrafos se dividan naturalmente entre hojas y eviten el salto completo */
+            li, .formato-bloque { page-break-inside: avoid; break-inside: avoid; }
             
-            /* Esta clase funciona como pegamento para evitar que un párrafo se quede huérfano sin su siguiente elemento */
+            /* Mantiene unidas las frases introductorias con el párrafo siguiente */
             .unir-siguiente { page-break-after: avoid !important; break-after: avoid !important; }
         }
     </style>
@@ -115,7 +115,6 @@
 
                             <p class="nueva-clausula" style="margin-bottom: 0;"><u><strong>QUINTO. - DE LA FORMA DE PAGO Y DESCUENTOS LEGALES:</strong></u> Las remuneraciones se pagarán mensualmente por período vencido, a más tardar el quinto (5°) día del mes siguiente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo.</p>
                             
-                            <!-- Uso de la clase unir-siguiente para vincular el primer párrafo al segundo -->
                             <p class="sin-sangria unir-siguiente" style="margin-top: 0; margin-bottom: 0;">El pago se realizará en moneda nacional mediante transferencia electrónica o depósito en el Banco <strong><span class="variable" id="dato-banco">[Banco]</span></strong>, cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> N° <strong><span class="variable" id="dato-cuenta">[cuenta]</span></strong>, indicada por el/la trabajador/a, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del citado cuerpo legal. Para estos efectos, el/la trabajador/a en este acto otorga su expresa y amplia autorización a la empresa para efectuar el pago de sus remuneraciones a través de dicha vía.</p>
                             
                             <p class="sin-sangria" style="margin-top: 0; margin-bottom: 0;">De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
@@ -124,7 +123,6 @@
 
                             <p class="nueva-clausula"><u><strong>SEXTO. - DE LA VIGENCIA:</strong></u> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
 
-                            <!-- Uso de la clase unir-siguiente para vincular el párrafo a la lista sin meter toda la lista en un solo bloque indivisible -->
                             <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong>SÉPTIMO. - DE LAS OBLIGACIONES:</strong></u> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
                             <ol type="a">
                                 <li style="margin-top: 0; margin-bottom: 0;">desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
