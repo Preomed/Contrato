@@ -20,9 +20,13 @@
         .tabla-impresion { width: 100%; border-collapse: collapse; border: none; }
         thead { display: table-header-group; }
         tfoot { display: table-footer-group; }
+        
         .encabezado-repetido { text-align: left; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid #ddd; height: 60px; }
         .logo-empresa { max-height: 60px; width: auto; }
-        .pie-pagina-contenido { text-align: center; font-weight: bold; font-size: 10pt; color: #555; padding-top: 15px; height: 30px; }
+        
+        /* Ajuste base del pie de página */
+        .pie-pagina-contenido { text-align: center; font-weight: bold; font-size: 10pt; color: #555; padding-top: 15px; width: 100%; }
+        
         h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; margin-top: 10px; }
         p { margin-bottom: 15px; text-indent: 0; }
         p.sin-sangria { text-indent: 0; }
@@ -48,11 +52,25 @@
             .controles { display: none !important; }
             .variable { background-color: transparent; font-weight: inherit; }
             
-            /* Se ha removido 'p' para permitir que los párrafos se dividan naturalmente entre hojas y eviten el salto completo */
+            /* Se eliminó 'p' para permitir que los párrafos se dividan naturalmente entre hojas y eviten el salto completo */
             li, .formato-bloque { page-break-inside: avoid; break-inside: avoid; }
             
-            /* Mantiene unidas las frases introductorias con el párrafo siguiente */
+            /* Esta clase funciona como pegamento para evitar que un párrafo se quede huérfano sin su siguiente elemento */
             .unir-siguiente { page-break-after: avoid !important; break-after: avoid !important; }
+
+            /* Fijamos el pie de página justo al borde del margen inferior */
+            .pie-pagina-contenido {
+                position: fixed;
+                bottom: 0; 
+                left: 0;
+                width: 100%;
+                padding-top: 0;
+                margin: 0;
+            }
+            /* Dejamos un espacio fantasma al final de la tabla para que el texto de la firma no choque con el pie de página */
+            tfoot td {
+                height: 1.2cm;
+            }
         }
     </style>
 </head>
@@ -190,7 +208,7 @@
 
                 <tfoot>
                     <tr>
-                        <td>
+                        <td style="text-align: center; vertical-align: bottom;">
                             <div class="pie-pagina-contenido">
                                 CONTRATO DE TRABAJO
                             </div>
