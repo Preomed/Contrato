@@ -24,7 +24,6 @@
         .encabezado-repetido { text-align: left; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid #ddd; height: 60px; }
         .logo-empresa { max-height: 60px; width: auto; }
         
-        /* Ajuste base del pie de página */
         .pie-pagina-contenido { text-align: center; font-weight: bold; font-size: 10pt; color: #555; padding-top: 15px; width: 100%; }
         
         h1 { font-size: 11pt; text-decoration: underline; text-align: center; margin-bottom: 30px; margin-top: 10px; }
@@ -51,14 +50,8 @@
             .contenedor-carta { box-shadow: none; padding: 0; margin: 0; }
             .controles { display: none !important; }
             .variable { background-color: transparent; font-weight: inherit; }
-            
-            /* Se eliminó 'p' para permitir que los párrafos se dividan naturalmente entre hojas y eviten el salto completo */
             li, .formato-bloque { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Esta clase funciona como pegamento para evitar que un párrafo se quede huérfano sin su siguiente elemento */
             .unir-siguiente { page-break-after: avoid !important; break-after: avoid !important; }
-
-            /* Fijamos el pie de página justo al borde del margen inferior */
             .pie-pagina-contenido {
                 position: fixed;
                 bottom: 0; 
@@ -67,7 +60,6 @@
                 padding-top: 0;
                 margin: 0;
             }
-            /* Dejamos un espacio fantasma al final de la tabla para que el texto de la firma no choque con el pie de página */
             tfoot td {
                 height: 1.2cm;
             }
@@ -114,6 +106,7 @@
                         <td>
                             <h1>CONTRATO DE TRABAJO</h1>
 
+                            <!-- AQUÍ ESTÁ EL BLOQUE MODIFICADO CON LA ETIQUETA id="bloque-prevision" -->
                             <p>En <span class="variable" id="dato-comuna-intro">[Comuna]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong><span class="variable" id="dato-nombre-empresa">[nombreEmpresa]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-empresa">[rutEmpresa]</span></strong>, representada legalmente por Don/ña <strong><span class="variable" id="dato-nombre-representante">[nombreRepresentante]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-representante">[rutRepresentante]</span></strong>, ambos con domicilio comercial en la ciudad de <span class="variable" id="dato-comuna-empresa">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa">[domicilioEmpresa]</span>, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <strong><span class="variable" id="dato-salud">[Salud]</span></strong> y <span id="bloque-prevision">como sistema de previsión <strong>AFP</strong> </span><strong><span class="variable" id="dato-afp">[AFP]</span></strong>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
                             <p class="nueva-clausula"><u><strong>PRIMERO. - DE LAS FUNCIONES Y CARGO:</strong></u> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñará el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
@@ -141,7 +134,7 @@
 
                             <p class="nueva-clausula"><u><strong>SEXTO. - DE LA VIGENCIA:</strong></u> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
 
-                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong>SÉPTIMO. - DE LAS OBLIGACIONES:</strong></u> Las obligations del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
+                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong>SÉPTIMO. - DE LAS OBLIGACIONES:</strong></u> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
                             <ol type="a">
                                 <li style="margin-top: 0; margin-bottom: 0;">desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">efectuar su trabajo en forma educada, maintaining un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
@@ -288,7 +281,6 @@
             return null;
         }
 
-        // --- FUNCION MAGICA PARA ENLACES DE DRIVE ---
         function obtenerUrlDirectaDrive(url) {
             if (!url) return "";
             const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
@@ -454,14 +446,12 @@
             if (index !== "") {
                 const datos = listaTrabajadores[index];
                 
-                // --- VARIABLES DE LA EMPRESA ---
                 const nombreEmpresa = buscarPropiedad(datos, "nombreempresa") || buscarPropiedad(datos, "empresa") || "[nombreEmpresa]";
                 const rutEmpresa = buscarPropiedad(datos, "rutempresa") || "[rutEmpresa]";
                 const nombreRepresentante = buscarPropiedad(datos, "nombrerepresentante") || buscarPropiedad(datos, "representante") || "[nombreRepresentante]";
                 const rutRepresentante = buscarPropiedad(datos, "rutrepresentante") || "[rutRepresentante]";
                 const domicilioEmpresa = buscarPropiedad(datos, "domicilioempresa") || buscarPropiedad(datos, "direccionempresa") || "[domicilioEmpresa]";
                 
-                // --- CONTROL DINÁMICO DEL LOGO DESDE LA BASE DE DATOS ---
                 const urlLogoRaw = buscarPropiedad(datos, "urllogo") || buscarPropiedad(datos, "logo");
                 const urlLogoDirecta = obtenerUrlDirectaDrive(urlLogoRaw);
 
@@ -476,10 +466,7 @@
                     }
                 }
 
-                // --- VARIABLE COMUNA ---
                 const comuna = buscarPropiedad(datos, "comuna") || buscarPropiedad(datos, "ciudad") || "[Comuna]";
-
-                // --- VARIABLES DEL TRABAJADOR ---
                 const nombres = buscarPropiedad(datos, "nombres") || buscarPropiedad(datos, "nombre") || "";
                 const paterno = buscarPropiedad(datos, "apellidopaterno") || "";
                 const materno = buscarPropiedad(datos, "apellidomaterno") || "";
@@ -493,9 +480,11 @@
                 const telephone = buscarPropiedad(datos, "telefono") || buscarPropiedad(datos, "teléfono") || buscarPropiedad(datos, "celular") || buscarPropiedad(datos, "fono") || "[Teléfono]";
                 
                 const salud = buscarPropiedad(datos, "salud") || "[Salud]";
-                const afp = buscarPropiedad(datos, "afp") || "[AFP]";
-                const cargo = buscarPropiedad(datos, "cargo") || "[Cargo]";
                 
+                // Búsqueda del dato en la columna X
+                const afp = buscarPropiedad(datos, "afp") || buscarPropiedad(datos, "prevision") || buscarPropiedad(datos, "sistemadeprevision") || "[AFP]";
+                
+                const cargo = buscarPropiedad(datos, "cargo") || "[Cargo]";
                 const jornada = buscarPropiedad(datos, "jornada") || "[Jornada]";
                 const horario = buscarPropiedad(datos, "horario") || "[Horario]";
                 
@@ -524,10 +513,8 @@
                     }
                 }
 
-                // --- FORMATEOS ---
                 const rutEmpresaFormat = formatearRut(rutEmpresa);
                 const rutRepresentanteFormat = formatearRut(rutRepresentante);
-                
                 const rutFormateado = formatearRut(rutRaw);
                 const fechaNacTexto = formatearFecha(fechaNacRaw, false);
                 const inicioContratoLargo = formatearFecha(inicioContratoRaw, true);
@@ -537,7 +524,6 @@
                 const colacionFormat = formatearDineroConSigno(colacionRaw);
                 const movilizacionFormat = formatearDineroConSigno(movilizacionRaw);
 
-                // --- ASIGNACIÓN DE TEXTOS DE LA EMPRESA Y COMUNA ---
                 asignarTextoSeguro("dato-nombre-empresa", nombreEmpresa);
                 asignarTextoSeguro("dato-rut-empresa", rutEmpresaFormat);
                 asignarTextoSeguro("dato-rut-empresa-firma", rutEmpresaFormat);
@@ -551,16 +537,10 @@
                 asignarTextoSeguro("dato-comuna-clausula2", comuna);
                 asignarTextoSeguro("dato-comuna-clausula16", comuna);
 
-                // --- ASIGNACIÓN DE TEXTOS DEL TRABAJADOR ---
                 asignarTextoSeguro("dato-nombres", nombres);
-                asignarTextoSeguro("dato-nombres-2", nombres);
                 asignarTextoSeguro("dato-paterno", paterno);
-                asignarTextoSeguro("dato-paterno-2", paterno);
                 asignarTextoSeguro("dato-materno", materno);
-                asignarTextoSeguro("dato-materno-2", materno);
-                
                 asignarTextoSeguro("dato-rut", rutFormateado);
-                asignarTextoSeguro("dato-rut-2", rutFormateado);
                 asignarTextoSeguro("dato-rut-firma", rutFormateado);
                 
                 asignarTextoSeguro("dato-fecha-nacimiento", fechaNacTexto); 
@@ -568,15 +548,16 @@
                 asignarTextoSeguro("dato-estado-civil", estadoCivil);
                 asignarTextoSeguro("dato-domicilio", domicilio);
                 asignarTextoSeguro("dato-correo", correo);
-                asignarTextoSeguro("dato-correo-2", correo);
                 asignarTextoSeguro("dato-telefono", telephone);
                 asignarTextoSeguro("dato-salud", salud);
                 
-                // --- MODIFICACIÓN DE PREVISIÓN / AFP ---
+                // --- LÓGICA REFORZADA PARA ELIMINAR TEXTO PREVIO SI ES PENSIONADO ---
                 asignarTextoSeguro("dato-afp", afp);
                 const bloquePrevision = document.getElementById("bloque-prevision");
                 if (bloquePrevision) {
-                    if (afp.trim().toLowerCase().includes("pensionad")) {
+                    // Normaliza eliminando acentos/tildes y espacios extras para la comparación
+                    const afpLimpio = String(afp).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+                    if (afpLimpio.includes("pension") || afpLimpio.includes("jubilad") || afpLimpio.includes("sin afp") || afpLimpio.includes("ningun") || afpLimpio.includes("no aplica")) {
                         bloquePrevision.style.display = "none";
                     } else {
                         bloquePrevision.style.display = "inline";
@@ -645,7 +626,6 @@
                 }
                 
             } else {
-                // RESETEO SI NO HAY NADIE SELECCIONADO
                 const logoImg = document.getElementById("logo-documento");
                 if (logoImg) {
                     logoImg.style.display = "none";
@@ -666,20 +646,15 @@
                 asignarTextoSeguro("dato-comuna-clausula16", "[Comuna]");
                 
                 asignarTextoSeguro("dato-nombres", "[Nombres]");
-                asignarTextoSeguro("dato-nombres-2", "[Nombres]");
                 asignarTextoSeguro("dato-paterno", "[Apellido Paterno]");
-                asignarTextoSeguro("dato-paterno-2", "[Apellido Paterno]");
                 asignarTextoSeguro("dato-materno", "[Apellido Materno]");
-                asignarTextoSeguro("dato-materno-2", "[Apellido Materno]");
                 asignarTextoSeguro("dato-rut", "[RUT]");
-                asignarTextoSeguro("dato-rut-2", "[RUT]");
                 asignarTextoSeguro("dato-rut-firma", "[RUT]");
                 asignarTextoSeguro("dato-fecha-nacimiento", "[Fecha de Nacimiento]");
                 asignarTextoSeguro("dato-nacionalidad", "[Nacionalidad]");
                 asignarTextoSeguro("dato-estado-civil", "[Estado Civil]");
                 asignarTextoSeguro("dato-domicilio", "[Domicilio]");
                 asignarTextoSeguro("dato-correo", "[Correo Electrónico]");
-                asignarTextoSeguro("dato-correo-2", "[Correo Electrónico]");
                 asignarTextoSeguro("dato-telefono", "[Teléfono]");
                 asignarTextoSeguro("dato-salud", "[Salud]");
                 
