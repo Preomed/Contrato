@@ -115,7 +115,7 @@
 
                             <p class="nueva-clausula"><u><strong>SEGUNDO. - DEL LUGAR DE TRABAJO:</strong></u> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-comuna-clausula2">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa-clausula2">[domicilioEmpresa]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
-                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribution de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
+                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribución de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
                             <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
 
                             <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>CUARTO. - DE LAS REMUNERACIONES:</strong></u> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
@@ -128,7 +128,11 @@
 
                             <p class="nueva-clausula" style="margin-bottom: 0;"><u><strong>QUINTO. - DE LA FORMA DE PAGO Y DESCUENTOS LEGALES:</strong></u> Las remuneraciones se pagarán mensualmente por período vencido, a más tardar el quinto (5°) día del mes siguiente, de acuerdo con los plazos establecidos en el artículo 55 del Código del Trabajo.</p>
                             
-                            <p class="sin-sangria unir-siguiente" style="margin-top: 0; margin-bottom: 0;">El pago se realizará en moneda nacional mediante transferencia electrónica o depósito en el Banco <strong><span class="variable" id="dato-banco">[Banco]</span></strong>, cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> N° <strong><span class="variable" id="dato-cuenta">[cuenta]</span></strong>, indicada por el/la trabajador/a, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del citado cuerpo legal. Para estos efectos, el/la trabajador/a en este acto otorga su expresa y amplia autorización a la empresa para efectuar el pago de sus remuneraciones a través de dicha vía.</p>
+                            <!-- BLOQUE DE PAGO: BANCO (OCULTO SI ES EXTRANJERO) -->
+                            <p id="pago-banco" class="sin-sangria unir-siguiente" style="margin-top: 0; margin-bottom: 0;">El pago se realizará en moneda nacional mediante transferencia electrónica o depósito en el Banco <strong><span class="variable" id="dato-banco">[Banco]</span></strong>, cuenta <span class="variable" id="dato-tipo-cuenta">[Tipo de Cuenta]</span> N° <strong><span class="variable" id="dato-cuenta">[cuenta]</span></strong>, indicada por el/la trabajador/a, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del citado cuerpo legal. Para estos efectos, el/la trabajador/a en este acto otorga su expresa y amplia autorización a la empresa para efectuar el pago de sus remuneraciones a través de dicha vía.</p>
+                            
+                            <!-- BLOQUE DE PAGO: EFECTIVO (MOSTRADO SI ES EXTRANJERO) -->
+                            <p id="pago-efectivo" class="sin-sangria unir-siguiente" style="margin-top: 0; margin-bottom: 0; display: none;">El pago se realizará en moneda nacional en <strong>dinero efectivo</strong>, indicada por el/la trabajador/a, en conformidad a lo dispuesto en el inciso segundo del artículo 54 del citado cuerpo legal. Para estos efectos, el/la trabajador/a en este acto otorga su expresa y amplia autorización a la empresa para efectuar el pago de sus remuneraciones a través de dicha vía.</p>
                             
                             <p class="sin-sangria" style="margin-top: 0; margin-bottom: 0;">De las sumas que correspondan, el Empleador deducirá los impuestos que las graven, las cotizaciones de seguridad social y demás descuentos legales y autorizados, en estricto cumplimiento a lo establecido en el artículo 58 del Código del Trabajo. Al respecto, se deja expresa constancia que la cotización legal obligatoria para salud corresponde al 7% de la remuneración imponible. En caso de que el/la trabajador/a se encuentre afiliado/a a una Institución de Salud Previsional (ISAPRE) y el costo del plan pactado supere dicho porcentaje legal, la cotización adicional o diferencia será de exclusivo cargo y costo del/la trabajador/a, autorizando desde ya al Empleador a descontar dicho excedente de sus remuneraciones conforme a lo notificado por la institución mediante el Formulario Único de Notificación (FUN).</p>
                             
@@ -167,7 +171,7 @@
 
                             <p class="nueva-clausula"><u><strong><span id="num-clausula-ley20393">DÉCIMO</span>. - DE LA LEY N° 20.393 Y PROBIDAD:</strong></u> El/La trabajador/a se obliga a mantener un comportamiento probo, íntegro y debe abstenerse de realizar conductas que pudieran vincular a la Empresa con los delitos considerados en la Ley N° 20.393, a saber, delitos de: lavado de activos (art. 27, ley 19.913); financiamiento del terrorismo, (art. 8, ley 18.314); negociación incompatible (Artículo 240, Código Penal); cohecho y (arts. 250 y 251 bis); corrupción entre particulares (Art. 287 bis y 287 ter, Código Penal); receptación (artículo 456 bis A, Código Penal); apropiación indebida (Artículo 470 N.º 1, Código Penal); y administración desleal (Artículo 470 N.º 11, Código Penal), sin perjuicio de aquellos que el legislador pueda incorporar en el futuro. El incumplimiento significará la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; de acuerdo con el artículo 160 N.° 7 del Código del Trabajo.</p>
 
-                            <p class="nueva-clausula"><u><strong><span id="num-clausula-confidencialidad">UNDÉCIMO</span>. - DE LA CONFIDENCIALIDAD:</strong></u> El/La trabajador/a se obliga a guardar total reserva, dentro y fuera de la Empresa, de todos los hechos, antecedentes e informaciones de que tome conocimiento en el ejercicio de sus funciones o derivados de las actividades y negocios del Empleador y sus sociedades relacionadas, lo que considera en general pero no exclusivamente, estudios, desarrollos informáticos, tecnología aplicada y cualquier otro dato o antecedente de propiedad del Empleador y sus sociedades relacionadas, aún después de producida la terminación del presente Contrato. El/La trabajador/a consiente que está prohibida la divulgación, transferencia a cualquier título, comunicación, alteración, modificación o copia de dichos antecedentes e informaciones, así como la utilización indebida o para otros propósitos que no sean sus labores. Además, El/la trabajador/a se obliga a la protección de la información suministrada por el Empleador, debiendo tomar las medidas de seguridad apropiadas para la protección contra el acceso o difusión no autorizados.</p>
+                            <p class="nueva-clausula"><u><strong><span id="num-clausula-confidencialidad">UNDÉCIMO</span>. - DE LA CONFIDENCIALIDAD:</strong></u> El/La trabajador/a se obliga a guardar total reserva, dentro y fuera de la Empresa, de todos los hechos, antecedentes e informaciones de que tome conocimiento en el ejercicio de sus funciones o derivados de las activities y negocios del Empleador y sus sociedades relacionadas, lo que considera en general pero no exclusivamente, estudios, desarrollos informáticos, tecnología aplicada y cualquier otro dato o antecedente de propiedad del Empleador y sus sociedades relacionadas, aún después de producida la terminación del presente Contrato. El/La trabajador/a consiente que está prohibida la divulgación, transferencia a cualquier título, comunicación, alteración, modificación o copia de dichos antecedentes e informaciones, así como la utilización indebida o para otros propósitos que no sean sus labores. Además, El/la trabajador/a se obliga a la protección de la información suministrada por el Empleador, debiendo tomar las medidas de seguridad apropiadas para la protección contra el acceso o difusión no autorizados.</p>
 
                             <p class="nueva-clausula"><u><strong><span id="num-clausula-propiedad">DUODÉCIMO</span>. - DE LA PROPIEDAD INTELECTUAL:</strong></u> Las partes dejan expresa constancia y El/la trabajador/a declara en forma explícita que todo y cualquier procedimiento, marca, modelo, sistema, programa computacional o software, desarrollo o aplicación informática, proyecto u otro, y en general, cualquier invención o creación y cualquier otro elemento de éstos o derivado de ellos, de que conozca o en el que intervenga el/la trabajador/a, sea en forma directa o indirecta en el desempeño de sus labores, pertenece y pertenecerá única y exclusivamente al Empleador, o a quien éste designe, sin pago adicional de ninguna especie para el/la trabajador/a, aun cuando sea efectivamente su autor o creador.</p>
 
@@ -463,8 +467,14 @@
             const isExtranjero = document.getElementById("check-extranjero").checked;
 
             if (isExtranjero) {
+                // Modificación Clausula Sexta Vigencia y Numeración
                 document.getElementById("clausula-vigencia").style.display = "none";
                 document.getElementById("bloque-extranjero").style.display = "block";
+                
+                // Toggle Pago Banco vs Efectivo
+                document.getElementById("pago-banco").style.display = "none";
+                document.getElementById("pago-efectivo").style.display = "block";
+
                 document.getElementById("label-rut-intro").innerText = "Pasaporte N°";
                 document.getElementById("label-rut-firma").innerText = "Pasaporte N°";
                 document.getElementById("num-ejemplares").innerText = "3";
@@ -489,6 +499,11 @@
             } else {
                 document.getElementById("clausula-vigencia").style.display = "block";
                 document.getElementById("bloque-extranjero").style.display = "none";
+                
+                // Toggle Pago Banco vs Efectivo
+                document.getElementById("pago-banco").style.display = "block";
+                document.getElementById("pago-efectivo").style.display = "none";
+
                 document.getElementById("label-rut-intro").innerText = "Rut.";
                 document.getElementById("label-rut-firma").innerText = "Rut.";
                 document.getElementById("num-ejemplares").innerText = "2";
@@ -517,10 +532,8 @@
                 
                 const nombreEmpresa = buscarPropiedad(datos, "nombreempresa") || buscarPropiedad(datos, "empresa") || "[nombreEmpresa]";
                 
-                // --- LÓGICA REFORZADA PARA OCULTAR LA PALABRA SOCIEDAD ---
                 const labelSociedad = document.getElementById("label-sociedad");
                 if (labelSociedad) {
-                    // Quitamos comillas o espacios en blanco antes de validar
                     const empresaLimpia = String(nombreEmpresa).replace(/^["'\s]+/, '').toLowerCase();
                     if (empresaLimpia.startsWith("sociedad") || empresaLimpia.startsWith("soc ")) {
                         labelSociedad.style.display = "none";
