@@ -86,6 +86,10 @@
                 <option value="">-- Seleccione --</option>
             </select>
 
+            <!-- NUEVA CASILLA EXTRANJERO -->
+            <input type="checkbox" id="check-extranjero" onchange="actualizarContrato()" style="width: auto; margin-left: 15px; cursor: pointer;">
+            <label for="check-extranjero" style="margin-left: 5px; cursor: pointer;"><strong>Extranjero</strong></label>
+
             <button onclick="window.print()">Imprimir PDF</button>
         </div>
 
@@ -106,7 +110,8 @@
                         <td>
                             <h1>CONTRATO DE TRABAJO</h1>
 
-                            <p>En <span class="variable" id="dato-comuna-intro">[Comuna]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong><span class="variable" id="dato-nombre-empresa">[nombreEmpresa]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-empresa">[rutEmpresa]</span></strong>, representada legalmente por Don/ña <strong><span class="variable" id="dato-nombre-representante">[nombreRepresentante]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-representante">[rutRepresentante]</span></strong>, ambos con domicilio comercial en la ciudad de <span class="variable" id="dato-comuna-empresa">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa">[domicilioEmpresa]</span>, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, Rut. <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <strong><span class="variable" id="dato-salud">[Salud]</span></strong> y <span id="bloque-prevision">como sistema de previsión <strong>AFP</strong> </span><strong><span class="variable" id="dato-afp">[AFP]</span></strong>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
+                            <!-- ID EN LA ETIQUETA "Rut." PARA CAMBIAR A "Pasaporte N°" -->
+                            <p>En <span class="variable" id="dato-comuna-intro">[Comuna]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la sociedad <strong><span class="variable" id="dato-nombre-empresa">[nombreEmpresa]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-empresa">[rutEmpresa]</span></strong>, representada legalmente por Don/ña <strong><span class="variable" id="dato-nombre-representante">[nombreRepresentante]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-representante">[rutRepresentante]</span></strong>, ambos con domicilio comercial en la ciudad de <span class="variable" id="dato-comuna-empresa">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa">[domicilioEmpresa]</span>, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, <span id="label-rut-intro">Rut.</span> <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <strong><span class="variable" id="dato-salud">[Salud]</span></strong> y <span id="bloque-prevision">como sistema de previsión <strong>AFP</strong> </span><strong><span class="variable" id="dato-afp">[AFP]</span></strong>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
                             <p class="nueva-clausula"><u><strong>PRIMERO. - DE LAS FUNCIONES Y CARGO:</strong></u> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñará el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
 
@@ -131,7 +136,10 @@
                             
                             <p class="sin-sangria" style="margin-top: 0;">Finalmente, el/la trabajador/a autoriza de manera expresa al Empleador para que descuente de sus remuneraciones el valor correspondiente al tiempo no trabajado, ya sea por atrasos, inasistencias injustificadas o permisos sin goce de sueldo, toda vez que el pago de la remuneración está directamente subordinado a la prestación efectiva de los servicios.</p>
 
-                            <p class="nueva-clausula"><u><strong>SEXTO. - DE LA VIGENCIA:</strong></u> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
+                            <!-- ID EN CLAUSULA VIGENCIA PARA OCULTARLA SI ES EXTRANJERO -->
+                            <div id="clausula-vigencia">
+                                <p class="nueva-clausula"><u><strong>SEXTO. - DE LA VIGENCIA:</strong></u> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
+                            </div>
 
                             <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong>SÉPTIMO. - DE LAS OBLIGACIONES:</strong></u> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
                             <ol type="a">
@@ -172,9 +180,19 @@
 
                             <p class="nueva-clausula"><u><strong>DECIMOQUINTO. - DE LA FECHA DE INGRESO:</strong></u> Se deja constancia que el/la trabajador/a ingresará a prestar servicios para el empleador el día <strong><span class="variable" id="dato-inicio-contrato-clausula">[Inicio Contrato]</span></strong>.</p>
 
-                            <p class="nueva-clausula"><u><strong>DECIMOSEXTO. - DEL DOMICILIO LEGAL:</strong></u> Para todos los efectos legales y contractuales que deriven del presente instrumento, las partes fijan su domicilio especial en la ciudad de <span class="variable" id="dato-comuna-clausula16">[Comuna]</span> y se someten expresamente a la jurisdicción y competencia de sus Tribunales de Justicia.</p>
+                            <!-- BLOQUE EXTRANJERO OCULTO POR DEFECTO -->
+                            <div id="bloque-extranjero" style="display: none;">
+                                <p class="nueva-clausula"><u><strong>DECIMOSEXTO. - DE LA VIGENCIA MIGRATORIA Y CONDICIÓN DE INICIO (LEY N° 21.325):</strong></u> En cumplimiento de la legislación migratoria y laboral vigente en Chile, se deja expresa constancia que la obligación de prestar servicios por parte del trabajador y la obligación de remunerar por parte del empleador, sólo empezarán a regir una vez que el trabajador haya obtenido el permiso de residencia temporal que lo habilite para trabajar en el país, o la autorización de trabajo para extranjeros con solicitud de residencia en trámite, otorgada por el Servicio Nacional de Migraciones.</p>
 
-                            <p class="nueva-clausula" style="margin-bottom: 0;"><u><strong>DECIMOSÉPTIMO. - DE LA DOCUMENTACIÓN:</strong></u> Previa lectura, el presente contrato se firma en 2 ejemplares, declarando el trabajador haber recibido un ejemplar de él y que este es fiel reflejo de la relación laboral existente entre las partes.</p>
+                                <p class="nueva-clausula"><u><strong>DECIMOSÉPTIMO. - DE LA CLÁUSULA DE VIAJE O RETORNO:</strong></u> El empleador se compromete a pagar, al término de la relación laboral, el pasaje de regreso del trabajador y de los miembros de su familia que legalmente vivan con él en Chile, a su país de origen o de residencia habitual (<span class="variable" id="dato-pais-origen">[Nacionalidad]</span>), conforme a las exigencias establecidas por el Servicio Nacional de Migraciones. Se entenderá por cumplida esta obligación cuando el empleador ponga a disposición del trabajador los pasajes respectivos. Esta obligación existirá hasta que el trabajador abandone el país u obtenga una nueva residencia o permiso que exima al empleador de tal responsabilidad.</p>
+
+                                <p class="nueva-clausula"><u><strong>DECIMOCTAVO. - DEL RÉGIMEN PREVISIONAL Y TRIBUTARIO PARA EXTRANJEROS:</strong></u> El empleador se obliga a efectuar las retenciones y entregas de las cotizaciones de seguridad social chilena (<span class="variable" id="dato-afp-ext">[AFP]</span> y <span class="variable" id="dato-salud-ext">[Salud]</span>) del trabajador, de conformidad a la legislación chilena vigente, comprometiéndose asimismo a responder ante la autoridad tributaria del pago del Impuesto a la Renta del trabajador respecto de sus remuneraciones, cuando legalmente corresponda.</p>
+                            </div>
+
+                            <!-- IDS DINAMICOS PARA RENUMERAR LAS DOS ULTIMAS -->
+                            <p class="nueva-clausula"><u><strong><span id="num-clausula-domicilio">DECIMOSEXTO</span>. - DEL DOMICILIO LEGAL:</strong></u> Para todos los efectos legales y contractuales que deriven del presente instrumento, las partes fijan su domicilio especial en la ciudad de <span class="variable" id="dato-comuna-clausula16">[Comuna]</span> y se someten expresamente a la jurisdicción y competencia de sus Tribunales de Justicia.</p>
+
+                            <p class="nueva-clausula" style="margin-bottom: 0;"><u><strong><span id="num-clausula-documentacion">DECIMOSÉPTIMO</span>. - DE LA DOCUMENTACIÓN:</strong></u> Previa lectura, el presente contrato se firma en <span id="num-ejemplares">2</span> ejemplares, declarando el trabajador haber recibido un ejemplar de él y que este es fiel reflejo de la relación laboral existente entre las partes.</p>
             
                             <p style="text-align: left; margin-top: 40px; text-indent: 0;">En señal de aceptación las partes firman</p>
 
@@ -183,7 +201,7 @@
                                     <div class="contenedor-firma-digital"></div>
                                     <div class="linea-firma"></div>
                                     <strong>Firma Trabajador</strong><br>
-                                    Rut. <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
+                                    <span id="label-rut-firma">Rut.</span> <strong><span class="variable" id="dato-rut-firma">[RUT]</span></strong>
                                 </div>
                                 
                                 <div class="bloque-firma">
@@ -396,6 +414,13 @@
 
         function formatearRut(valor) {
             if (!valor || String(valor).includes("[")) return valor;
+            
+            // Verificamos si la casilla Extranjero está marcada, para no forzar formato de RUT al pasaporte.
+            const isExtranjero = document.getElementById("check-extranjero").checked;
+            if (isExtranjero) {
+                return valor; // Retorna el pasaporte tal cual viene
+            }
+            
             let cuerpo = String(valor).replace(/[\s\.\,-]/g, '').trim();
             if (cuerpo.length < 2) return valor;
             let dv = cuerpo.slice(-1).toUpperCase();
@@ -441,7 +466,27 @@
 
         function actualizarContrato() {
             const index = document.getElementById("selector-trabajador").value;
-            
+            const isExtranjero = document.getElementById("check-extranjero").checked;
+
+            // === LÓGICA DE EXTRANJERO (VISUAL Y TEXTOS) ===
+            if (isExtranjero) {
+                document.getElementById("clausula-vigencia").style.display = "none";
+                document.getElementById("bloque-extranjero").style.display = "block";
+                document.getElementById("label-rut-intro").innerText = "Pasaporte N°";
+                document.getElementById("label-rut-firma").innerText = "Pasaporte N°";
+                document.getElementById("num-ejemplares").innerText = "3";
+                document.getElementById("num-clausula-domicilio").innerText = "DECIMONONO";
+                document.getElementById("num-clausula-documentacion").innerText = "VIGÉSIMO";
+            } else {
+                document.getElementById("clausula-vigencia").style.display = "block";
+                document.getElementById("bloque-extranjero").style.display = "none";
+                document.getElementById("label-rut-intro").innerText = "Rut.";
+                document.getElementById("label-rut-firma").innerText = "Rut.";
+                document.getElementById("num-ejemplares").innerText = "2";
+                document.getElementById("num-clausula-domicilio").innerText = "DECIMOSEXTO";
+                document.getElementById("num-clausula-documentacion").innerText = "DECIMOSÉPTIMO";
+            }
+
             if (index !== "") {
                 const datos = listaTrabajadores[index];
                 
@@ -470,7 +515,7 @@
                 const paterno = buscarPropiedad(datos, "apellidopaterno") || "";
                 const materno = buscarPropiedad(datos, "apellidomaterno") || "";
                 
-                const rutRaw = buscarPropiedad(datos, "rut") || "";
+                const rutRaw = buscarPropiedad(datos, "rut") || buscarPropiedad(datos, "pasaporte") || "";
                 const nacionalidad = buscarPropiedad(datos, "nacionalidad") || "[Nacionalidad]";
                 const estadoCivil = buscarPropiedad(datos, "estadocivil") || "[Estado Civil]";
                 const domicilio = buscarPropiedad(datos, "domicilio") || "[Domicilio]";
@@ -479,7 +524,6 @@
                 const telephone = buscarPropiedad(datos, "telefono") || buscarPropiedad(datos, "teléfono") || buscarPropiedad(datos, "celular") || buscarPropiedad(datos, "fono") || "[Teléfono]";
                 
                 const salud = buscarPropiedad(datos, "salud") || "[Salud]";
-                
                 const afp = buscarPropiedad(datos, "afp") || buscarPropiedad(datos, "prevision") || buscarPropiedad(datos, "sistemadeprevision") || "[AFP]";
                 
                 const cargo = buscarPropiedad(datos, "cargo") || "[Cargo]";
@@ -548,6 +592,11 @@
                 asignarTextoSeguro("dato-correo", correo);
                 asignarTextoSeguro("dato-telefono", telephone);
                 asignarTextoSeguro("dato-salud", salud);
+
+                // Asignar variables al bloque extranjero
+                asignarTextoSeguro("dato-pais-origen", nacionalidad);
+                asignarTextoSeguro("dato-afp-ext", afp);
+                asignarTextoSeguro("dato-salud-ext", salud);
                 
                 asignarTextoSeguro("dato-afp", afp);
                 const bloquePrevision = document.getElementById("bloque-prevision");
@@ -654,6 +703,11 @@
                 asignarTextoSeguro("dato-telefono", "[Teléfono]");
                 asignarTextoSeguro("dato-salud", "[Salud]");
                 
+                // Variables en vacío para el bloque extranjero
+                asignarTextoSeguro("dato-pais-origen", "[Nacionalidad]");
+                asignarTextoSeguro("dato-afp-ext", "[AFP]");
+                asignarTextoSeguro("dato-salud-ext", "[Salud]");
+
                 const bloquePrevision = document.getElementById("bloque-prevision");
                 if (bloquePrevision) bloquePrevision.style.display = "inline";
                 asignarTextoSeguro("dato-afp", "[AFP]");
