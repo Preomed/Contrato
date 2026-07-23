@@ -115,7 +115,7 @@
 
                             <p class="nueva-clausula"><u><strong>SEGUNDO. - DEL LUGAR DE TRABAJO:</strong></u> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-comuna-clausula2">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa-clausula2">[domicilioEmpresa]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
-                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribución de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
+                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribution de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
                             <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
 
                             <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>CUARTO. - DE LAS REMUNERACIONES:</strong></u> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
@@ -229,7 +229,8 @@
     </div>
 
     <script>
-        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/1UIk1P8EAdyhJLOQKQ5pV7ldTj8aLeibxldRuvEW-Qdo/export?format=csv&v=2"; 
+        const timestamp = new Date().getTime();
+        const urlGoogleSheet = "https://docs.google.com/spreadsheets/d/1UIk1P8EAdyhJLOQKQ5pV7ldTj8aLeibxldRuvEW-Qdo/export?format=csv&v=2&t=" + timestamp; 
 
         let listaTrabajadores = [];
         let mesesDisponibles = []; 
@@ -684,6 +685,7 @@
                     const numColacion = String(colacionRaw).replace(/[^\d]/g, ''); 
                     if (numColacion === "0" || numColacion === "") {
                         liColacion.style.display = "none";
+                        asignarTextoSeguro("dato-colacion", ""); // <-- SE BORRA EL TEXTO PARA EVITAR FANTASMAS
                     } else {
                         liColacion.style.display = "list-item";
                         asignarTextoSeguro("dato-colacion", colacionFormat);
@@ -695,6 +697,7 @@
                     const numMovilizacion = String(movilizacionRaw).replace(/[^\d]/g, '');
                     if (numMovilizacion === "0" || numMovilizacion === "") {
                         liMovilizacion.style.display = "none";
+                        asignarTextoSeguro("dato-movilizacion", ""); // <-- SE BORRA EL TEXTO PARA EVITAR FANTASMAS
                     } else {
                         liMovilizacion.style.display = "list-item";
                         asignarTextoSeguro("dato-movilizacion", movilizacionFormat);
