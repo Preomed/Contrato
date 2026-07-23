@@ -531,18 +531,38 @@
             if (index !== "") {
                 const datos = listaTrabajadores[index];
 
-                // --- INICIO CÓDIGO DETECTOR ---
+                // --- INICIO CÓDIGO DETECTOR MEJORADO ---
                 let columnasCulpables = [];
-                for (let key in datos) {
-                    let valorCelda = String(datos[key]).replace(/[^\d]/g, '');
-                    if (valorCelda === "65000") {
-                        columnasCulpables.push(`Columna: "${key}" -> Valor: ${datos[key]}`);
+                let indicesCabeceras = Object.keys(datos);
+                
+                function obtenerLetraColumna(indice) {
+                    let letra = '';
+                    let temp = indice + 1;
+                    while (temp > 0) {
+                        let mod = (temp - 1) % 26;
+                        letra = String.fromCharCode(65 + mod) + letra;
+                        temp = Math.floor((temp - mod) / 26);
+                    }
+                    return letra;
+                }
+
+                for (let i = 0; i < indicesCabeceras.length; i++) {
+                    let key = indicesCabeceras[i];
+                    let valorOriginal = String(datos[key]);
+                    let soloNumeros = valorOriginal.replace(/[^\d]/g, '');
+                    
+                    if (soloNumeros === "65000") {
+                        let letraExcel = obtenerLetraColumna(i);
+                        // El +2 compensa que la fila 1 son las cabeceras y que el índice de JavaScript empieza en 0
+                        let filaExcel = parseInt(index) + 2; 
+                        columnasCulpables.push(`👉 Coordenada: ${letraExcel}${filaExcel} (Nombre cabecera: "${key}")`);
                     }
                 }
+                
                 if (columnasCulpables.length > 0) {
-                    alert("¡ATENCIÓN! Para este trabajador, el sistema encontró el valor 65.000 escondido en las siguientes columnas:\n\n" + columnasCulpables.join("\n") + "\n\nRevisa tu Google Sheet buscando estas columnas exactas (podrían estar ocultas o duplicadas).");
+                    alert("¡TE ATRAPÉ! El valor 65.000 fantasma está oculto exactamente en:\n\n" + columnasCulpables.join("\n") + "\n\nVe a tu Google Sheet, busca esa celda exacta (Letra y Número) y bórrala por completo.");
                 }
-                // --- FIN CÓDIGO DETECTOR ---
+                // --- FIN CÓDIGO DETECTOR MEJORADO ---
                 
                 const nombreEmpresa = buscarPropiedad(datos, "nombreempresa") || buscarPropiedad(datos, "empresa") || "[nombreEmpresa]";
                 
