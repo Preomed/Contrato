@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrato de Trabajo Dinámico - Preomed</title>
     
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFn0lEQVR4AbRWa2xURRT+5u6W0hZaECy0CJW2QgEBBbZiEUQQgWj0DzFoDPiMiQpi0IAxmmp8kAi+gpJIRRMTQdBiQEkUTRGwQgAtiqANIIYilAJ97qvbveN35u7Whba7W1KGPXfunnPm+75zdmaopa/QsG07KWQLV2CQGd5gADIngu9xAULa4PejdMveRNwm3qMChLwlGMTSTbtx5JwXUEg4elRAIBTC8s0/o6q2GXAp6IT0QI8JCIXb8OLWPag8eQHaIrlF6CQUMCsJmV2kSMujoQZfABXH6gCXBW1MRUNx58sWIORnm1rgb21tJ4hWbgRIB5LQcJkCNC54/Vj8+U4EQmFHgFKwI5WLALhcSGYTdFuAJmqTP4hnNu3C0XqfQx59GgEuaEssOejksiIE0nZfMIRny3fjUF0z7Ng2swPa5YZm5cpNWG7EyLK4EzPjxi8KioCXv96LfacaHXKpuD2DveHRk+Nnk1yLuPZY1y/dEsAi8XttE0BwLeS0KLSSFwoQYs0u6JiYhLqyhAKk6nqvt/1e1ySxaSCBpiHmutPy27vdAAVIJ2JC6GrEFSDkf9Wex5vbq7g+cquwepBYk0SMAfORqPku7Ze45InTRLt+dClAyP8534jFX1SiodU5apqAWsDd3OWcTZVRbPl96DNxkmsKjIbizZ0KEPLTjc14alMl6gJt0KwqCiLA0mrpgs2W/99mbkLmaSOCAvkeXRNv7lRAg89vyGu8/D+d1ZhNRxSllCOGe0ALAcnojnwYk2NIUUYE1zW2eHHs9Fm0hcPcQ3Yk7+KpgwCp/ti5Rhxv5CVDAm3OtJORDANR6eMMeG6sESCwJ7Z97xRyFlg0q+zCI6MyMdvtYQZpa+j0XryrGn+gTCtvNzRte0Iwhx1CltdYAsVuyYYlAM/G01DRQnJFqSGdNi9ElntMw0pRSGXd0PwbCNT3cdxJzXy7Co7Eu0xYgwAkJtbdj5RzWa+ZeM1jYvW1IRQJPIGKsmPv283lm9kGvGZRa/Y7JGQTHeL8WFvkEvVm2tQMkLq3Hk3/MmRVPsZ5W/obaed4nxAEaAm0Q1dHqWvY3ppWuwsnw7snwXMDDUjGzbC/iaUPX3SRw+eQZZaEWuO4xcBDA47DfCN/x0AOu2V6Lvn4fR58Be1G3dhp0bv8Gr5RWoqW+JUAFZaSlYteBO5PTPavcZAUop3H/LROxZsQSPzSymTo2amlP45ddD2L+vChu2/Yjpr5Rhyktr8MO2Cuz7dgf2f7cL+7/fjQdXb8Tja7/CG5t3oPrIcRw9cQb1LQESKJrGgRxUzB1fiHcX3oWDK5fi4dsmQ0U6ygSnA/KilIV+6el4YJoHS+fNxjDPZJTMmoapUz14bf4dWDK3BPNLxmJUfi4K83JQMHQQCq4ZhJsKhuDWomsxa2wBikYPx+iJYzCGGNPunoEDK55G9XvPYQtyx/BB0/MRz1jZ68fhzMF16FhyBDkZw/gNrGglDIGKFw6rEsdzncFi8ev9OYRuD1vMBS7o5SzWDafWNhyozAzDRly94NDadjcS5rtlbgY4KxBnNGpAOFa5inAPYU5sAgYu17zogHJ8zJ64cPiQqTKaTAJCoacwm36tHKglYovwskyAM5DKYVx2f1xX9FQWEIWW4VgUVB2uhtlnnzkpPWGUuLk8ZTlpgMuQFkYmeZmDAlHBwGyopc7BQ65fLvYrkp14aNJ+cjrk04Ch9xk8NU2AhRupMC32D26TCjeo1MB8Ra8c0MeRmReQs4FQqb5KKLAtSMHIyvFDSpEotEtAZaykJfZh7gdl2kyDU9R+JjkA1NTmUM19CX6dERKtAKdA6dxv3wyKhc5vUkeg5Ho9T8AAAD//9bXE5AAAAAGSURBVAMAjjFekqR0p3MAAAAASUVORK5CYII=">
+    <!-- FAVICON ACTUALIZADO -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/GvPV5hcn/favicon-16x16.png">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     
@@ -89,6 +90,10 @@
             <input type="checkbox" id="check-extranjero" onchange="actualizarContrato()" style="width: auto; margin-left: 15px; cursor: pointer;">
             <label for="check-extranjero" style="margin-left: 5px; cursor: pointer;"><strong>Extranjero</strong></label>
 
+            <!-- CHECKBOX: SUELDO EMPRESARIAL -->
+            <input type="checkbox" id="check-empresarial" onchange="actualizarContrato()" style="width: auto; margin-left: 15px; cursor: pointer;">
+            <label for="check-empresarial" style="margin-left: 5px; cursor: pointer;"><strong>Sueldo Empresarial</strong></label>
+
             <button onclick="window.print()">Imprimir PDF</button>
         </div>
 
@@ -109,19 +114,22 @@
                         <td>
                             <h1>CONTRATO DE TRABAJO</h1>
 
-                            <p>En <span class="variable" id="dato-comuna-intro">[Comuna]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la <span id="label-sociedad">sociedad </span><strong><span class="variable" id="dato-nombre-empresa">[nombreEmpresa]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-empresa">[rutEmpresa]</span></strong>, representada legalmente por Don/ña <strong><span class="variable" id="dato-nombre-representante">[nombreRepresentante]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-representante">[rutRepresentante]</span></strong>, ambos con domicilio comercial en la ciudad de <span class="variable" id="dato-comuna-empresa">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa">[domicilioEmpresa]</span>, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, <span id="label-rut-intro">Rut.</span> <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <strong><span class="variable" id="dato-salud">[Salud]</span></strong> y <span id="bloque-prevision">como sistema de previsión <strong>AFP</strong> </span><strong><span class="variable" id="dato-afp">[AFP]</span></strong>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
+                            <p>En <span class="variable" id="dato-comuna-intro">[Comuna]</span>, a <strong><span class="variable" id="dato-inicio-contrato-intro">[Inicio Contrato]</span></strong>, entre la <span id="label-sociedad">sociedad </span><strong><span class="variable" id="dato-nombre-empresa">[nombreEmpresa]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-empresa">[rutEmpresa]</span></strong>, representada legalmente por Don/ña <strong><span class="variable" id="dato-nombre-representante">[nombreRepresentante]</span></strong>, Rut. <strong><span class="variable" id="dato-rut-representante">[rutRepresentante]</span></strong>, ambos con domicilio comercial en la ciudad de <span class="variable" id="dato-comuna-empresa">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa">[domicilioEmpresa]</span>, en lo sucesivo el empleador, y Don/ña <strong><span class="variable" id="dato-nombres">[Nombres]</span> <span class="variable" id="dato-paterno">[Apellido Paterno]</span> <span class="variable" id="dato-materno">[Apellido Materno]</span></strong>, <span id="label-rut-intro">Rut.</span> <strong><span class="variable" id="dato-rut">[RUT]</span></strong>, con fecha de nacimiento el <span class="variable" id="dato-fecha-nacimiento">[Fecha de Nacimiento]</span>, de nacionalidad <span class="variable" id="dato-nacionalidad">[Nacionalidad]</span>, estado civil <span class="variable" id="dato-estado-civil">[Estado Civil]</span>, con domicilio particular en <span class="variable" id="dato-domicilio">[Domicilio]</span>, <span class="variable" id="dato-comuna-domicilio">[Comuna]</span>, correo electrónico <span class="variable" id="dato-correo">[Correo Electrónico]</span>, teléfono de contacto +56 9 <span class="variable" id="dato-telefono">[Teléfono]</span>, teniendo como sistema de salud <strong><span class="variable" id="dato-salud">[Salud]</span></strong> y <span id="bloque-prevision">como sistema de previsión <strong>AFP</strong> </span><strong><span class="variable" id="dato-afp">[AFP]</span></strong>, en adelante, el/la trabajador/a, se ha convenido suscribir un contrato de trabajo, estableciendo las siguientes cláusulas:</p>
 
                             <p class="nueva-clausula"><u><strong>PRIMERO. - DE LAS FUNCIONES Y CARGO:</strong></u> El/La trabajador/a se obliga a desempeñar las funciones propias de “<strong><span class="variable" id="dato-cargo">[Cargo]</span></strong>” de acuerdo con las instrucciones que al efecto sean impartidas por el empleador, estableciendo de común acuerdo que las funciones y responsabilidades propias del cargo o función que desempeñará el/la trabajador/a se encuentran establecidas en el descriptor de cargo correspondiente, documento que recepcionado por el/la trabajador/a se entiende incorporado al presente contrato. El/La trabajador/a queda obligado a cumplir leal y correctamente con todos los deberes que le imponga este instrumento o aquéllos que se deriven de las funciones y cargo, debiendo ejecutar las instrucciones que le confieran sus superiores. Del mismo modo el/la trabajador/a se obliga a desempeñar en forma eficaz, las funciones y el cargo para el cual ha sido contratado, empleando para ello la mayor diligencia y dedicación.</p>
 
                             <p class="nueva-clausula"><u><strong>SEGUNDO. - DEL LUGAR DE TRABAJO:</strong></u> Los servicios serán prestados en el local comercial ubicado en <span class="variable" id="dato-comuna-clausula2">[Comuna]</span>, <span class="variable" id="dato-domicilio-empresa-clausula2">[domicilioEmpresa]</span>, sin perjuicio de lo anterior, el empleador podrá alterar el sitio o recinto en que deban prestarse los servicios, siempre que quede dentro de la misma ciudad o lugar, de acuerdo con lo establecido en el artículo 12 del Código del Trabajo.</p>
 
-                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribution de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</p>
+                            <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>TERCERO. - DE LA JORNADA DE TRABAJO:</strong></u> 
+                                <span id="clausula3-original">La jornada de trabajo será de <span class="variable" id="dato-jornada">[Jornada]</span> horas semanales de acuerdo con el artículo 22 del Código del Trabajo<span id="bloque-descanso">, la cual tendrá un descanso de <span class="variable" id="dato-tiempo-colacion">[Tiempo Colación]</span> no imputable a dicha jornada</span>, la distribution de la jornada será de la siguiente manera de acuerdo con el artículo 28 del Código del Trabajo:</span>
+                                <span id="clausula3-empresarial" style="display: none;">Las partes dejan constancia que, atendida la naturaleza de las funciones que desempeñará el Trabajador y por tratarse de un cargo de <strong><span class="variable" id="dato-cargo-empresarial">[Cargo]</span></strong>, éste se encontrará excluido de la limitación de jornada ordinaria de trabajo, prestando sus servicios bajo la modalidad de libre disponibilidad, en estricto cumplimiento y de conformidad a lo dispuesto en el inciso segundo del artículo 22 del Código del Trabajo.</span>
+                            </p>
                             <span class="variable formato-bloque" id="dato-horario">[Horario]</span>
 
                             <p class="nueva-clausula" style="margin-bottom: 5px;"><u><strong>CUARTO. - DE LAS REMUNERACIONES:</strong></u> El empleador se compromete a remunerar al trabajador mensualmente en la forma que se indica:</p>
                             <ol type="a">
                                 <li style="margin-top: 0; margin-bottom: 0;">Sueldo Base Mensual <strong><span class="variable" id="dato-sueldo">[Sueldo Base]</span></strong> .- (proporcional a los días trabajados en el mes)</li>
-                                <li style="margin-top: 0; margin-bottom: 0;">La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
+                                <li id="li-gratificacion" style="margin-top: 0; margin-bottom: 0;">La Gratificación legal mensual corresponderá al 25% de la Remuneración base con un tope según el Art. 50 del Código del Trabajo correspondiente a 4,75 ingresos mínimos mensuales.</li>
                                 <li id="li-colacion" style="margin-top: 0; margin-bottom: 0;">Asignación no Imponible de Colación <strong><span class="variable" id="dato-colacion">[Colación]</span></strong> .- (proporcional a los días trabajados en el mes)</li>
                                 <li id="li-movilizacion" style="margin-top: 0; margin-bottom: 0;">Asignación no Imponible de Movilización <strong><span class="variable" id="dato-movilizacion">[Movilización]</span></strong> .- (proporcional a los días trabajados en el mes)</li>
                             </ol>
@@ -142,8 +150,11 @@
                                 <p class="nueva-clausula"><u><strong>SEXTO. - DE LA VIGENCIA:</strong></u> El presente contrato tendrá una duración hasta el día <strong><span class="variable" id="dato-termino-contrato">[Término Contrato]</span></strong>.</p>
                             </div>
 
-                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong><span id="num-clausula-obligaciones">SÉPTIMO</span>. - DE LAS OBLIGACIONES:</strong></u> Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</p>
-                            <ol type="a">
+                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong><span id="num-clausula-obligaciones">SÉPTIMO</span>. - DE LAS OBLIGACIONES:</strong></u> 
+                                <span id="clausula7-original">Las obligaciones del trabajador emanan de la naturaleza del presente contrato de trabajo y de la función que se obliga a realizar en la cláusula primera. Además, se obliga en forma particular, a lo siguiente:</span>
+                                <span id="clausula7-empresarial" style="display: none;">Las obligaciones del Trabajador emanan de la naturaleza de su cargo gerencial/administrativo y de la función de dirección encomendada. Dada la confianza depositada en él, se obliga de forma particular a lo siguiente:</span>
+                            </p>
+                            <ol type="a" id="lista-obligaciones-original">
                                 <li style="margin-top: 0; margin-bottom: 0;">desempeñar las labores e instrucciones que le sean impartidas, con la máxima dedicación, esmero y cuidado, cumpliendo todas las obligaciones pertinentes de prolijidad, claridad y cuidado propias de su función;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">efectuar su trabajo en forma educada, manteniendo un trato cortés y amable con los usuarios, proveedores, los otros trabajadores de la empresa y con sus jefes directos;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">emplear la máxima diligencia en el cuidado del equipo de trabajo, instalaciones del empleador y en general, de todos los bienes de la empresa;</li>
@@ -153,9 +164,19 @@
                                 <li style="margin-top: 0; margin-bottom: 0;">comunicar dentro de las 48 horas siguientes de sucedido un cambio en los antecedentes personales, cambio de domicilio y que deben ser considerados en el contrato de trabajo;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">mantener una adecuada higiene personal.</li>
                             </ol>
+                            <ol type="a" id="lista-obligaciones-empresarial" style="display: none;">
+                                <li style="margin-top: 0; margin-bottom: 0;">Gestión y Liderazgo: Administrar, dirigir y gestionar los recursos humanos, técnicos y financieros a su cargo con la máxima diligencia, lealtad y el cuidado propio de un buen hombre de negocios, velando siempre por los intereses, el desarrollo y el crecimiento de la empresa.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Representación y Reputación: Representar a la empresa frente a terceros, clientes, proveedores y autoridades con el más alto estándar ético, salvaguardando en todo momento el prestigio, la imagen y el buen nombre de la compañía.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Resguardo Patrimonial: Velar por la integridad, conservación y optimización de los activos, patrimonio, instalaciones, propiedad intelectual e industrial, y recursos financieros de la empresa, adoptando las medidas necesarias para evitar mermas, contingencias o riesgos innecesarios.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Cumplimiento Normativo: Garantizar el estricto cumplimiento de las leyes laborales, tributarias, comerciales y medioambientales aplicables a la operación, así como de las políticas internas y el Reglamento Interno de la empresa.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Prevención de Riesgos y Clima Laboral: Liderar y promover activamente un entorno de trabajo seguro y un clima laboral de respeto, asegurando la correcta implementación de las políticas de seguridad y salud ocupacional.</li>
+                            </ol>
 
-                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong><span id="num-clausula-prohibiciones">OCTAVO</span>. - DE LAS PROHIBICIONES:</strong></u> Las partes acuerdan establecer como prohibición expresa que el/la trabajador/a ejecute para terceros negociaciones o servicios que se encuentren dentro del giro del negocio del empleador, así como prestar su servicio a terceros que realicen un giro similar al del empleador. En caso de infracción a la prohibición señalada en el inciso anterior, el empleador queda habilitado para proceder conforme al N° 2 del artículo 160 del Código del Trabajo. Este contrato terminará en los casos señalados en los artículos 159, 160 y 161 del Código del Trabajo. Para los efectos del N° 1 del referido artículo 160, constituyen falta de probidad destinar para su uso personal o autorizar el uso por parte de terceros de bienes de la empresa, sin autorización expresa del empleador. Y para los efectos del N° 7 del mismo artículo 160, constituyen incumplimiento grave de las obligaciones que impone el contrato, el no cumplimiento de las obligaciones estipuladas en la cláusula <span id="ref-clausula-obligaciones">Séptima</span> del presente contrato, además de las siguientes prohibiciones:</p>
-                            <ol type="a">
+                            <p class="nueva-clausula unir-siguiente" style="margin-bottom: 5px;"><u><strong><span id="num-clausula-prohibiciones">OCTAVO</span>. - DE LAS PROHIBICIONES:</strong></u> 
+                                <span id="clausula8-original">Las partes acuerdan establecer como prohibición expresa que el/la trabajador/a ejecute para terceros negociaciones o servicios que se encuentren dentro del giro del negocio del empleador, así como prestar su servicio a terceros que realicen un giro similar al del empleador. En caso de infracción a la prohibición señalada en el inciso anterior, el empleador queda habilitado para proceder conforme al N° 2 del artículo 160 del Código del Trabajo. Este contrato terminará en los casos señalados en los artículos 159, 160 y 161 del Código del Trabajo. Para los efectos del N° 1 del referido artículo 160, constituyen falta de probidad destinar para su uso personal o autorizar el uso por parte de terceros de bienes de la empresa, sin autorización expresa del empleador. Y para los efectos del N° 7 del mismo artículo 160, constituyen incumplimiento grave de las obligaciones que impone el contrato, el no cumplimiento de las obligaciones estipuladas en la cláusula <span id="ref-clausula-obligaciones">Séptima</span> del presente contrato, además de las siguientes prohibiciones:</span>
+                                <span id="clausula8-empresarial" style="display: none;">Atendida la naturaleza del cargo de exclusiva confianza, las partes acuerdan establecer prohibiciones estrictas para resguardar el patrimonio y la strategy de la empresa. La infracción de cualquiera de estas prohibiciones constituirá un incumplimiento grave de las obligaciones del contrato, habilitando al empleador para proceder conforme al artículo 160 del Código del Trabajo.<br>Queda estrictamente prohibido al Trabajador:</span>
+                            </p>
+                            <ol type="a" id="lista-prohibiciones-original">
                                 <li style="margin-top: 0; margin-bottom: 0;">presentarse a cumplir sus funciones en estado de intemperancia o bajo los efectos de drogas o sustancias psicotrópicas, consumir bebidas alcohólicas, drogas o sustancias psicotrópicas dentro de la jornada de trabajo o introducir dichas sustancias al lugar de trabajo;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">atrasos reiterados en el inicio de su jornada de trabajo;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">fumar durante la jornada de trabajo;</li>
@@ -165,6 +186,14 @@
                                 <li style="margin-top: 0; margin-bottom: 0;">resistirse a acatar las órdenes e instrucciones de sus jefes;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">no registrar su asistencia y atrasos en forma debida en el registro de asistencia;</li>
                                 <li style="margin-top: 0; margin-bottom: 0;">ejercer cualquier conducta que constituya acoso sexual, acoso laboral o violencia en el trabajo, conforme a lo establecido en la Ley N° 21.643 (Ley Karin) y en el Reglamento Interno de la empresa, siendo esto considerado un incumplimiento grave de las obligaciones que impone el contrato.</li>
+                            </ol>
+                            <ol type="a" id="lista-prohibiciones-empresarial" style="display: none;">
+                                <li style="margin-top: 0; margin-bottom: 0;">Conflictos de Interés y Exclusividad: Ejecutar por cuenta propia o de terceros, de manera directa o indirecta, negociaciones, asesorías o servicios que se encuentren dentro del giro del negocio del empleador o que revistan el carácter de competencia directa. Cualquier excepción requerirá la autorización previa, expresa y por escrito del Directorio/Socios.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Uso Indebido de Activos (Probidad - Art. 160 N°1): Destinar para su uso personal, de sus familiares o autorizar el uso por parte de terceros no relacionados, de los fondos, bienes, equipos, personal o recursos de la empresa sin autorización expresa.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Vulneración de Confidencialidad: Revelar, divulgar, otorgar conocimiento a terceros o utilizar para provecho propio o ajeno, la información confidencial, estratégica, financiera, secretos comerciales o bases de datos a las que tenga acceso en razón de su cargo.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Comprometer a la Empresa: Asumir compromisos financieros, firmar contratos o realizar actos jurídicos que excedan las facultades y poderes de administración que le hayan sido expresamente delegados, o que comprometan gravemente el patrimonio de la compañía sin los respaldos correspondientes.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Conductas de Acoso y Violencia (Ley N° 21.643 - Ley Karin): Ejercer, permitir o encubrir cualquier conducta que constituya acoso sexual, acoso laboral o violencia en el trabajo. Dada su posición de liderazgo, el Trabajador tiene el deber no solo de abstenerse de estas conductas, sino de prevenirlas, detenerlas y denunciarlas conforme al Reglamento Interno y la ley, siendo su omisión o participación directa considerada una falta gravísima y causal de despido inmediato.</li>
+                                <li style="margin-top: 0; margin-bottom: 0;">Sustancias Ilícitas: Desempeñar sus funciones estratégicas y de representación bajo los efectos de drogas, sustancias psicotrópicas o en estado de intemperancia, que comprometan su capacidad de decisión y la imagen corporativa.</li>
                             </ol>
 
                             <p class="nueva-clausula"><u><strong><span id="num-clausula-reglamento">NOVENO</span>. - DEL REGLAMENTO INTERNO:</strong></u> Las partes convienen en elevating la calidad de esencial de este contrato, la obligatoriedad para el/la trabajador/a de cumplir celosamente con el Reglamento Interno de Orden, Higiene y Seguridad de la empresa, y sus eventuales modificaciones cuyo texto recibe en este acto, según consta en el presente contrato y en documento anexo de recepción de este. Igualmente, el/la trabajador/a declara conocer el texto íntegro de dicho Reglamento y sus modificaciones, el cual se entiende como parte integrante de este contrato, de tal manera, que su desobediencia o transgresión se estimará como incumplimiento grave a las obligaciones que impone el contrato, pudiendo el empleador poner término a este de inmediato y sin indemnización alguna.</p>
@@ -466,13 +495,49 @@
         function actualizarContrato() {
             const index = document.getElementById("selector-trabajador").value;
             const isExtranjero = document.getElementById("check-extranjero").checked;
+            const isEmpresarial = document.getElementById("check-empresarial").checked;
 
+            // -------- LÓGICA DE SUELDO EMPRESARIAL --------
+            if (isEmpresarial) {
+                document.getElementById("clausula3-original").style.display = "none";
+                document.getElementById("clausula3-empresarial").style.display = "inline";
+                document.getElementById("dato-horario").style.display = "none"; 
+                
+                document.getElementById("li-gratificacion").style.display = "none"; 
+                
+                document.getElementById("clausula7-original").style.display = "none";
+                document.getElementById("clausula7-empresarial").style.display = "inline";
+                document.getElementById("lista-obligaciones-original").style.display = "none";
+                document.getElementById("lista-obligaciones-empresarial").style.display = "block";
+                
+                document.getElementById("clausula8-original").style.display = "none";
+                document.getElementById("clausula8-empresarial").style.display = "inline";
+                document.getElementById("lista-prohibiciones-original").style.display = "none";
+                document.getElementById("lista-prohibiciones-empresarial").style.display = "block";
+            } else {
+                document.getElementById("clausula3-original").style.display = "inline";
+                document.getElementById("clausula3-empresarial").style.display = "none";
+                document.getElementById("dato-horario").style.display = "block";
+                
+                document.getElementById("li-gratificacion").style.display = "list-item";
+                
+                document.getElementById("clausula7-original").style.display = "inline";
+                document.getElementById("clausula7-empresarial").style.display = "none";
+                document.getElementById("lista-obligaciones-original").style.display = "block";
+                document.getElementById("lista-obligaciones-empresarial").style.display = "none";
+                
+                document.getElementById("clausula8-original").style.display = "inline";
+                document.getElementById("clausula8-empresarial").style.display = "none";
+                document.getElementById("lista-prohibiciones-original").style.display = "block";
+                document.getElementById("lista-prohibiciones-empresarial").style.display = "none";
+            }
+            // ----------------------------------------------
+
+            // -------- LÓGICA DE EXTRANJERO --------
             if (isExtranjero) {
-                // Modificación Clausula Sexta Vigencia y Numeración
                 document.getElementById("clausula-vigencia").style.display = "none";
                 document.getElementById("bloque-extranjero").style.display = "block";
                 
-                // Toggle Pago Banco vs Efectivo
                 document.getElementById("pago-banco").style.display = "none";
                 document.getElementById("pago-efectivo").style.display = "block";
 
@@ -501,7 +566,6 @@
                 document.getElementById("clausula-vigencia").style.display = "block";
                 document.getElementById("bloque-extranjero").style.display = "none";
                 
-                // Toggle Pago Banco vs Efectivo
                 document.getElementById("pago-banco").style.display = "block";
                 document.getElementById("pago-efectivo").style.display = "none";
 
@@ -527,6 +591,7 @@
                 document.getElementById("num-clausula-domicilio").innerText = "DECIMOSEXTO";
                 document.getElementById("num-clausula-documentacion").innerText = "DECIMOSÉPTIMO";
             }
+            // --------------------------------------
 
             if (index !== "") {
                 const datos = listaTrabajadores[index];
@@ -630,6 +695,7 @@
                 asignarTextoSeguro("dato-comuna-empresa", comuna);
                 asignarTextoSeguro("dato-comuna-clausula2", comuna);
                 asignarTextoSeguro("dato-comuna-clausula16", comuna);
+                asignarTextoSeguro("dato-comuna-domicilio", comuna);
 
                 asignarTextoSeguro("dato-nombres", nombres);
                 asignarTextoSeguro("dato-paterno", paterno);
@@ -661,6 +727,7 @@
                 }
                 
                 asignarTextoSeguro("dato-cargo", cargo);
+                asignarTextoSeguro("dato-cargo-empresarial", cargo); 
                 asignarTextoSeguro("dato-sueldo", sueldoFormat);
                 asignarTextoSeguro("dato-banco", banco);
                 asignarTextoSeguro("dato-cuenta", cuenta);
@@ -685,7 +752,7 @@
                     const numColacion = String(colacionRaw).replace(/[^\d]/g, ''); 
                     if (numColacion === "0" || numColacion === "") {
                         liColacion.style.display = "none";
-                        asignarTextoSeguro("dato-colacion", ""); // <-- SE BORRA EL TEXTO PARA EVITAR FANTASMAS
+                        asignarTextoSeguro("dato-colacion", "");
                     } else {
                         liColacion.style.display = "list-item";
                         asignarTextoSeguro("dato-colacion", colacionFormat);
@@ -697,7 +764,7 @@
                     const numMovilizacion = String(movilizacionRaw).replace(/[^\d]/g, '');
                     if (numMovilizacion === "0" || numMovilizacion === "") {
                         liMovilizacion.style.display = "none";
-                        asignarTextoSeguro("dato-movilizacion", ""); // <-- SE BORRA EL TEXTO PARA EVITAR FANTASMAS
+                        asignarTextoSeguro("dato-movilizacion", "");
                     } else {
                         liMovilizacion.style.display = "list-item";
                         asignarTextoSeguro("dato-movilizacion", movilizacionFormat);
@@ -745,7 +812,8 @@
                 asignarTextoSeguro("dato-comuna-empresa", "[Comuna]");
                 asignarTextoSeguro("dato-comuna-clausula2", "[Comuna]");
                 asignarTextoSeguro("dato-comuna-clausula16", "[Comuna]");
-                
+                asignarTextoSeguro("dato-comuna-domicilio", "[Comuna]");
+
                 asignarTextoSeguro("dato-nombres", "[Nombres]");
                 asignarTextoSeguro("dato-paterno", "[Apellido Paterno]");
                 asignarTextoSeguro("dato-materno", "[Apellido Materno]");
@@ -768,6 +836,7 @@
                 asignarTextoSeguro("dato-afp", "[AFP]");
                 
                 asignarTextoSeguro("dato-cargo", "[Cargo]");
+                asignarTextoSeguro("dato-cargo-empresarial", "[Cargo]"); 
                 asignarTextoSeguro("dato-sueldo", "[Sueldo Base]");
                 
                 asignarTextoSeguro("dato-banco", "[Banco]");
