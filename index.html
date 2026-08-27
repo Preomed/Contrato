@@ -41,9 +41,9 @@
         .variable { background-color: #fff3cd; font-weight: bold; transition: 0.3s; }
         .formato-bloque { display: block; white-space: pre-line; padding-left: 60px; text-indent: 0; }
 
-        /* ESTILOS PARA TABLA DE COMISIONES EDITABLE */
-        .tabla-comisiones { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 5px; }
-        .tabla-comisiones th, .tabla-comisiones td { border: 1px solid #000; padding: 4px; text-align: center; font-size: 9pt; }
+        /* ESTILOS PARA TABLA DE COMISIONES EDITABLE (MÁS COMPACTA VERTICALMENTE) */
+        .tabla-comisiones { width: 100%; border-collapse: collapse; margin-top: 5px; margin-bottom: 5px; }
+        .tabla-comisiones th, .tabla-comisiones td { border: 1px solid #000; padding: 1px 4px; text-align: center; font-size: 9pt; line-height: 1.1; }
         .tabla-comisiones td[contenteditable="true"] { transition: background-color 0.2s; }
         .tabla-comisiones td[contenteditable="true"]:hover { background-color: #f0f8ff; cursor: text; }
         .tabla-comisiones td[contenteditable="true"]:focus { background-color: #e6f2ff; outline: 1px solid #007bff; }
@@ -52,7 +52,7 @@
         .columna-accion { width: 30px; border: none !important; }
         .btn-eliminar { background: none; border: none; color: red; font-size: 10pt; cursor: pointer; padding: 0; margin: 0; }
         .btn-eliminar:hover { transform: scale(1.2); }
-        .btn-agregar-fila { background-color: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 9pt; margin-bottom: 15px; margin-left: auto; display: block; font-family: inherit; }
+        .btn-agregar-fila { background-color: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 9pt; margin-bottom: 10px; margin-left: auto; display: block; font-family: inherit; }
         .btn-agregar-fila:hover { background-color: #218838; }
 
         @media print {
@@ -148,8 +148,8 @@
                                 <li id="li-comisiones" style="margin-top: 0; margin-bottom: 0; display: none;">
                                     Comisión por Ventas, la cual se pagará sobre el total de ventas netas gestionadas mensualmente y será variable de acuerdo con lo indicado en el siguiente recuadro denominado “Tabla de comisiones”.
                                     
-                                    <!-- CONTENEDOR DE LA TABLA (75% ANCHO, CENTRADA, NO SE ROMPE AL IMPRIMIR) -->
-                                    <div style="width: 75%; margin: 0 auto; page-break-inside: avoid; break-inside: avoid;">
+                                    <!-- CONTENEDOR DE LA TABLA (MÁS COMPACTA, CENTRADA, SALTO DE PÁGINA AISLADO) -->
+                                    <div style="width: 75%; margin: 5px auto 0 auto; page-break-inside: avoid; break-inside: avoid;">
                                         <table class="tabla-comisiones" id="tabla-dinamica-comisiones">
                                             <thead>
                                                 <tr>
@@ -261,7 +261,7 @@
 
                             <p class="nueva-clausula"><u><strong><span id="num-clausula-reglamento">NOVENO</span>. - DEL REGLAMENTO INTERNO:</strong></u> Las partes convienen en elevating la calidad de esencial de este contrato, la obligatoriedad para el/la trabajador/a de cumplir celosamente con el Reglamento Interno de Orden, Higiene y Seguridad de la empresa, y sus eventuales modificaciones cuyo texto recibe en este acto, según consta en el presente contrato y en documento anexo de recepción de este. Igualmente, el/la trabajador/a declara conocer el texto íntegro de dicho Reglamento y sus modificaciones, el cual se entiende como parte integrante de este contrato, de tal manera, que su desobediencia o transgresión se estimará como incumplimiento grave a las obligaciones que impone el contrato, pudiendo el empleador poner término a este de inmediato y sin indemnización alguna.</p>
 
-                            <p class="nueva-clausula"><u><strong><span id="num-clausula-ley20393">DÉCIMO</span>. - DE LA LEY N° 20.393 Y PROBIDAD:</strong></u> El/La trabajador/a se obliga a mantener un comportamiento probo, íntegro y debe abstenerse de realizar conductas que pudieran vincular a la Empresa con los delitos considerados en la Ley N° 20.393, a saber, delitos de: lavado de activos (art. 27, ley 19.913); financiamiento del terrorismo, (art. 8, ley 18.314); negociación incompatible (Artículo 240, Código Penal); cohecho y (arts. 250 y 251 bis); corrupción entre particulares (Art. 287 bis y 287 ter, Código Penal); receptación (artículo 456 bis A, Código Penal); apropiación indebida (Artículo 470 N.º 1, Código Penal); y administration desleal (Artículo 470 N.º 11, Código Penal), sin perjuicio de aquellos que el legislador pueda incorporar en el futuro. El incumplimiento significará la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; de acuerdo con el artículo 160 N.° 7 del Código del Trabajo.</p>
+                            <p class="nueva-clausula"><u><strong><span id="num-clausula-ley20393">DÉCIMO</span>. - DE LA LEY N° 20.393 Y PROBIDAD:</strong></u> El/La trabajador/a se obliga a mantener un comportamiento probo, íntegro y debe abstenerse de realizar conductas que pudieran vincular a la Empresa con los delitos considerados en la Ley N° 20.393, a saber, delitos de: lavado de activos (art. 27, ley 19.913); financiamiento del terrorismo, (art. 8, ley 18.314); negociación incompatible (Artículo 240, Código Penal); cohecho y (arts. 250 y 251 bis); corrupción entre particulares (Art. 287 bis y 287 ter, Código Penal); receptación (artículo 456 bis A, Código Penal); apropiación indebida (Artículo 470 N.º 1, Código Penal); y administración desleal (Artículo 470 N.º 11, Código Penal), sin perjuicio de aquellos que el legislador pueda incorporar en el futuro. El incumplimiento significará la terminación ipso facto del presente contrato de trabajo, sin indemnización alguna; de acuerdo con el artículo 160 N.° 7 del Código del Trabajo.</p>
 
                             <p class="nueva-clausula"><u><strong><span id="num-clausula-confidencialidad">UNDÉCIMO</span>. - DE LA CONFIDENCIALIDAD:</strong></u> El/La trabajador/a se obliga a guardar total reserva, dentro y fuera de la Empresa, de todos los hechos, antecedentes e informaciones de que tome conocimiento en el ejercicio de sus funciones o derivados de las activities y negocios del Empleador y sus sociedades relacionadas, lo que considera en general pero no exclusivamente, estudios, desarrollos informáticos, tecnología aplicada y cualquier otro dato o antecedente de propiedad del Empleador y sus sociedades relacionadas, aún después de producida la terminación del presente Contrato. El/La trabajador/a consiente que está prohibida la divulgación, transferencia a cualquier título, comunicación, alteración, modificación o copia de dichos antecedentes e informaciones, así como la utilización indebida o para otros propósitos que no sean sus labores. Además, El/la trabajador/a se obliga a la protección de la información suministrada por el Empleador, debiendo tomar las medidas de seguridad apropiadas para la protección contra el acceso o difusión no autorizados.</p>
 
